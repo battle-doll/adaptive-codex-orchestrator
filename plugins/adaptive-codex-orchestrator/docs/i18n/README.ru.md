@@ -1,0 +1,191 @@
+# Adaptive Codex Orchestrator
+
+[English](../../README.md) · [한국어](README.ko.md) ·
+[日本語](README.ja.md) · [简体中文](README.zh-CN.md) · **Русский**
+
+> Adaptive Codex Orchestrator — независимый общественный проект. Он не связан
+> с OpenAI, не спонсируется и не одобряется OpenAI и не является официальным
+> продуктом OpenAI.
+
+Adaptive Codex Orchestrator — локальный, автономный оркестрационный модуль для
+Codex. Детерминированный управляющий слой на Python обрабатывает корейские и
+английские команды, состояние, идентификатор проекта и контекст hooks для
+необязательного режима **Ultra Orchestration**. Выбранная пользователем
+родительская модель по-прежнему отвечает за требования, архитектуру, решение
+о делегировании, проверку результатов, интеграцию, итоговую валидацию и ответ.
+
+Текущая версия `0.1.0` — кандидат для публичной проверки. Публикация исходного
+кода на GitHub, отправка на проверку OpenAI, одобрение и отдельное действие
+разработчика Publish — разные состояния; открытый репозиторий не означает, что
+последующие этапы уже завершены.
+
+## Возможности и границы
+
+- Состояние one-shot, session, project и общий default плагина хранится в
+  `${PLUGIN_DATA}/state-v1.json`.
+- Для делегирования рассматриваются только ограниченные, обратимые и независимо
+  проверяемые задачи.
+- Профиль `balanced` по умолчанию допускает не более 4 workers за один ход
+  родительской модели и 1 одновременного writer.
+- Активный session получает compact policy, а числовой
+  `active_policy_revision` предотвращает повтор того же revision в обычных ходах.
+- Вместо исходного пути проекта сохраняется SHA-256 hash нормализованного корня.
+- Если trusted hooks недоступны, `$adaptive-orchestration <task>` применяет
+  политику только к текущей задаче.
+
+Плагин не меняет родительскую модель, reasoning level, model selector,
+разрешения, sandbox или глобальную конфигурацию Codex. Он не заявляет, что
+Ultra reasoning проверен, и не утверждает, что `gpt-5.3-codex-spark` реально
+использовался без подтверждения host. Управляющему слою не нужны API key, OAuth,
+внешняя учётная запись, telemetry или сетевые запросы. Он не сохраняет prompt,
+transcript, source code или исходный абсолютный путь проекта.
+
+## Поддерживаемые поверхности
+
+Проверенные цели — Codex app и CLI. Для постоянного управления на естественном
+языке нужны поддерживаемые и доверенные пользователем hooks. Нельзя считать,
+что обычный разговор ChatGPT запускает локальные Codex hooks, предоставляет
+`PLUGIN_DATA`, те же события очистки или настройки subagent. Проверенный
+контракт не поддерживает плагины в Codex IDE extension.
+
+Для предполагаемой работы пользователь вручную выбирает Sol и настройку Ultra
+reasoning/intelligence. Плагин не делает этот выбор и не может надёжно проверить
+Ultra. Подробности: [Compatibility](../COMPATIBILITY.md).
+
+## Локальная установка
+
+В manifest записан publisher `battle-doll`, а
+[GitHub repository](https://github.com/battle-doll/adaptive-codex-orchestrator),
+homepage, privacy и terms URL обозначены как публичные адреса-кандидаты. Это не
+означает, что публикация состоялась: перед использованием или подачей нужно
+проверить доступность и содержание всех адресов.
+До установки проверьте `.codex-plugin/plugin.json`, `hooks/hooks.json`,
+`hooks/runtime.py` и решите, доверяете ли вы hooks.
+
+После проверки фактического значения `.agents/plugins/marketplace.json`
+владелец репозитория вручную выполняет следующие команды. Они изменяют состояние
+Codex.
+
+```text
+codex plugin marketplace add <absolute-repository-root>
+codex plugin list --marketplace adaptive-codex-orchestrator --available --json
+codex plugin add adaptive-codex-orchestrator@adaptive-codex-orchestrator
+```
+
+После установки или переустановки начните новую задачу Codex. Default personal
+marketplace обнаруживается автоматически; для него не следует выполнять
+`marketplace add`.
+
+## Команды управления
+
+Детерминированное распознавание команд сейчас поддерживает **только корейский и
+английский языки**. Русская документация не означает поддержку русских команд.
+Используйте, например, следующие английские команды:
+
+```text
+Turn on Ultra Orchestration for this session.
+Use Ultra Orchestration for this task only.
+Enable Ultra Orchestration for this repository.
+Enable Ultra Orchestration globally.
+Switch to the fast profile.
+Show orchestration status.
+Turn off Ultra Orchestration.
+```
+
+Запрос status не меняет состояние. Явное отрицание, конфликтующие scope/profile,
+цитаты, code blocks и случайные примеры в длинном тексте обрабатываются безопасно.
+Команда управления и реальная задача могут применяться в одном ходе.
+
+Приоритет состояния:
+
+```text
+one-shot > session > project > global > disabled
+```
+
+Обычное отключение без scope создаёт session OFF override, не удаляя project
+или global preference.
+
+| Profile | Ceiling workers за ход родителя | Одновременные writers | Spawn attempts/subtask | Retry делегирования |
+| --- | ---: | ---: | ---: | ---: |
+| `conservative` | 2 | 1 | 1 | 0 |
+| `balanced` | 4 | 1 | 1 | 0 |
+| `fast` | 6 | 1 | 1 | 0 |
+
+Значения profile — это потолки, а не цели. Фактический предел равен минимуму из
+profile, более низкого host/user cap, числа независимо полезных задач и
+task-specific safety cap. Простая или ясная single-file правка и проверка
+неподтверждённого заявления о завершении используют 0 workers. Локально
+воспроизводимая ошибка также по умолчанию использует 0; максимум 1 read-only
+Explorer допустим, только если независимые данные существенно помогут. Четыре
+маленькие и очевидные пары module-test также по умолчанию используют 0. Максимум
+2 раздельных read-only Explorer разрешены, только когда каждый slice требует
+существенных независимых данных, а ожидаемая экономия явно превышает стоимость
+spawn и интеграции. Для shared-state, authentication, authorization, permission
+или tenant work допустим максимум 1 read-only Explorer, причём пишет только
+родитель. Во всех profile одновременный writer может быть только один.
+
+## Политика делегирования
+
+Для быстрого worker подходят чётко ограниченные текстовые задачи: поиск файлов
+и symbols, трассировка короткого call path, анализ конкретной ошибки, небольшое
+подтверждённое исправление, focused tests и механические изменения. Архитектура,
+неясная первопричина, authentication/authorization/cryptography, database
+migration, разрушительные операции, public API, крупные зависимости, сложная
+concurrency, интеграция и окончательная оценка проверки остаются у родителя.
+
+Nested delegation запрещён без исключений. Подробные routing, worker-contract и
+model reference загружаются один раз и только после того, как compact gate
+выбрал реальную делегированную задачу. Для каждого subtask делается одна попытка
+Spark spawn; при сбое, лимите или неподдерживаемом явном model задача немедленно
+возвращается родителю без retry и host-default замены. Requested model/reasoning
+хранятся отдельно от host-confirmed active model; отчёт model при старте не
+доказывает completion или billing.
+
+Каждый worker возвращает только шесть точных top-level fields: `conclusion`,
+`evidence`, `files_and_lines`, `tests_or_checks`, `risks` и
+`recommended_parent_action`. Родитель проверяет все результаты и может точечно
+проверить ссылки, пробелы или конфликты, но не повторяет то же широкое
+исследование от начала до конца. Сообщаются только действительно созданные
+workers.
+
+## Безопасность, конфиденциальность и сброс
+
+Управляющий слой использует локальный код стандартной библиотеки и не выполняет
+внешних сетевых запросов. State содержит только mode/profile, hash project key,
+session key и lifecycle flags. Prompt разбирается в памяти текущего event и не
+записывается в log или state.
+
+Для сброса завершите затронутые sessions и получите точный `PLUGIN_DATA`,
+назначенный host для `adaptive-codex-orchestrator`. Убедитесь, что это каталог
+данных данного плагина, а не plugin source, repository root, home, `.codex` root
+или общий родительский каталог. Удаляйте только этот каталог либо только
+`state-v1.json`. Не используйте wildcard или неразрешённую environment variable
+как цель рекурсивного удаления.
+
+- [Исходный Security](../SECURITY.md)
+- [Исходный Privacy](../PRIVACY.md)
+- [Исходный Terms](../TERMS.md)
+- [Поддержка на русском](SUPPORT.ru.md)
+
+## Проверка и статус публикации
+
+[Локальная запись от 2026-08-19](../VALIDATION.md) фиксирует PASS на Windows /
+Python 3.12.10: 108 tests (0 failures, 1 намеренный skip), 31 policy evals и
+1 969 package assertions. GitHub Actions настроен для Windows, macOS, Linux и
+Python 3.9/3.12, но remote CI не запускался в рамках этой локальной записи.
+
+Publisher `battle-doll`, указанные в manifest публичные URL-кандидаты и два PNG
+зафиксированы. Нейтральные `assets/logo.png` и `assets/composer-icon.png`
+предназначены для повторного использования
+в четырёх light/dark upload slots портала. Пакет относится к skills-only и не
+имеет пользовательского UI инструмента MCP, поэтому product UI screenshots в
+текущем объёме проверки не нужны. Также подготовлены
+[5 позитивных и 3 негативных reviewer cases](../../evals/reviewer-cases.json).
+До публикации остаются проверка доступности и содержания каждого URL,
+legal/trademark review, clean
+install из реального публичного источника и сверка актуальных требований портала.
+См. [Submission](SUBMISSION.ru.md) и [Проверку публикации](PUBLISHING.ru.md).
+
+Исходный код предоставляется по [MIT License](../../LICENSE). Этот перевод носит
+информационный характер и не заменяет поддерживаемую английскую документацию,
+[Terms](../TERMS.md) или непереведённый текст `MIT License`.

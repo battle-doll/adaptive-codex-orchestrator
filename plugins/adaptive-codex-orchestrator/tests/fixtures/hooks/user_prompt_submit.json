@@ -1,0 +1,10 @@
+{
+  "session_id": "fixture-session",
+  "transcript_path": null,
+  "cwd": ".",
+  "hook_event_name": "UserPromptSubmit",
+  "model": "gpt-5.6-sol",
+  "permission_mode": "default",
+  "turn_id": "fixture-turn",
+  "prompt": "Show orchestration status"
+}

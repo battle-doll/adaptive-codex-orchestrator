@@ -1,0 +1,9 @@
+interface:
+  display_name: "Ultra Orchestration"
+  short_description: "Task-aware bounded orchestration"
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/logo.svg"
+  brand_color: "#7168E8"
+  default_prompt: "Use $adaptive-orchestration for this task; delegate only when bounded work materially helps."
+policy:
+  allow_implicit_invocation: true

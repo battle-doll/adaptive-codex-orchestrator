@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "primary_worker": "gpt-5.3-codex-spark",
+  "worker_reasoning_effort": "medium",
+  "fallback_strategy": "return-to-parent",
+  "allow_host_default_fallback": false
+}

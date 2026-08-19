@@ -1,0 +1,69 @@
+{
+  "description": "Offline deterministic state and policy hooks for Ultra Orchestration.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh \"${PLUGIN_ROOT}/hooks/run_runtime.sh\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}\\hooks\\run_runtime.ps1\"",
+            "timeout": 5,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh \"${PLUGIN_ROOT}/hooks/run_runtime.sh\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}\\hooks\\run_runtime.ps1\"",
+            "timeout": 5,
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh \"${PLUGIN_ROOT}/hooks/run_runtime.sh\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}\\hooks\\run_runtime.ps1\"",
+            "timeout": 5,
+            "additionalContextLimit": 1200
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh \"${PLUGIN_ROOT}/hooks/run_runtime.sh\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}\\hooks\\run_runtime.ps1\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh \"${PLUGIN_ROOT}/hooks/run_runtime.sh\"",
+            "commandWindows": "powershell.exe -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"${PLUGIN_ROOT}\\hooks\\run_runtime.ps1\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}

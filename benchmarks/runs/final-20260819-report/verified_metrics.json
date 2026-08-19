@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "report_id": "adaptive-codex-orchestrator-0.1.0-final-20260819",
+  "as_of": "2026-08-20T00:06:16+09:00",
+  "status": "verified",
+  "scope": "six paired tasks, three repetitions per arm, 36 sequential fresh-repository runs",
+  "usage_method": "Recursive root/child rollout analysis using each unique thread ID once and its final cumulative usage",
+  "comparison_basis": "gpt-5.6-sol with ultra reasoning for both parent arms; activation and warmup excluded",
+  "integrity": {
+    "root_runs": 36,
+    "unique_threads": 69,
+    "threads_with_usage": 69,
+    "child_workers": 33,
+    "maximum_depth": 1,
+    "arm_first_baseline_pairs": 9,
+    "arm_first_harness_pairs": 9,
+    "missing_roots": 0,
+    "overlapping_threads": 0,
+    "warnings": 0,
+    "invalid_jsonl_lines": 0,
+    "timeouts": 0,
+    "plugin_policy_revision": 3,
+    "injected_policy_sha256": "ea3281acba150e1f595f7d8f1f178780abf676ffdc61a067205969cae237cd73",
+    "injected_policy_length": 1175,
+    "benchmark_inputs_composite_sha256": "5e2d5e655d8c1d4adf3c13dd51dee18dee30831325b6dd06b4b9104cbb70911a"
+  },
+  "final": {
+    "arms": {
+      "baseline": {
+        "runs": 18,
+        "passed": 16,
+        "mean_quality_score": 98.125,
+        "quality_score_sum": 1766.25,
+        "wall_time_seconds": 3336.421,
+        "total_tokens": 12309398,
+        "worker_count": 33,
+        "root_model": "gpt-5.6-sol/ultra",
+        "worker_models": {"gpt-5.6-sol/ultra": 33}
+      },
+      "harness": {
+        "runs": 18,
+        "passed": 17,
+        "mean_quality_score": 98.646,
+        "quality_score_sum": 1775.625,
+        "wall_time_seconds": 2858.524,
+        "total_tokens": 5971141,
+        "worker_count": 0,
+        "root_model": "gpt-5.6-sol/ultra",
+        "requested_worker_model": "gpt-5.3-codex-spark/medium",
+        "confirmed_worker_models": {}
+      }
+    },
+    "comparison": {
+      "quality_delta_points": 0.521,
+      "quality_score_sum_delta": 9.375,
+      "wall_time_delta_seconds": -477.897,
+      "wall_time_delta_percent": -14.324,
+      "total_token_delta": -6338257,
+      "total_token_delta_percent": -51.491,
+      "worker_delta": -33
+    },
+    "repetitions": [
+      {
+        "id": "final-20260819-r1",
+        "baseline_wall_seconds": 1141.927,
+        "harness_wall_seconds": 972.152,
+        "wall_delta_percent": -14.867,
+        "baseline_tokens": 4227228,
+        "harness_tokens": 2105279,
+        "token_delta_percent": -50.197,
+        "baseline_score_sum": 590.625,
+        "harness_score_sum": 590.625
+      },
+      {
+        "id": "final-20260819-r2",
+        "baseline_wall_seconds": 1140.376,
+        "harness_wall_seconds": 877.159,
+        "wall_delta_percent": -23.082,
+        "baseline_tokens": 3879237,
+        "harness_tokens": 1786867,
+        "token_delta_percent": -53.938,
+        "baseline_score_sum": 590.0,
+        "harness_score_sum": 590.0
+      },
+      {
+        "id": "final-20260819-r3",
+        "baseline_wall_seconds": 1054.118,
+        "harness_wall_seconds": 1009.213,
+        "wall_delta_percent": -4.260,
+        "baseline_tokens": 4202933,
+        "harness_tokens": 2078995,
+        "token_delta_percent": -50.535,
+        "baseline_score_sum": 585.625,
+        "harness_score_sum": 595.0
+      }
+    ],
+    "tasks": [
+      {
+        "id": "trivial",
+        "baseline_wall_seconds": 206.995,
+        "harness_wall_seconds": 204.536,
+        "wall_delta_percent": -1.188,
+        "baseline_tokens": 398825,
+        "harness_tokens": 381007,
+        "token_delta_percent": -4.468,
+        "baseline_score_sum": 300.0,
+        "harness_score_sum": 300.0,
+        "baseline_workers": 0,
+        "harness_workers": 0
+      },
+      {
+        "id": "mapping",
+        "baseline_wall_seconds": 513.844,
+        "harness_wall_seconds": 418.643,
+        "wall_delta_percent": -18.527,
+        "baseline_tokens": 1440350,
+        "harness_tokens": 610259,
+        "token_delta_percent": -57.631,
+        "baseline_score_sum": 291.25,
+        "harness_score_sum": 290.625,
+        "baseline_workers": 8,
+        "harness_workers": 0
+      },
+      {
+        "id": "parser_bug",
+        "baseline_wall_seconds": 541.09,
+        "harness_wall_seconds": 432.542,
+        "wall_delta_percent": -20.061,
+        "baseline_tokens": 1929277,
+        "harness_tokens": 1005578,
+        "token_delta_percent": -47.878,
+        "baseline_score_sum": 300.0,
+        "harness_score_sum": 300.0,
+        "baseline_workers": 5,
+        "harness_workers": 0
+      },
+      {
+        "id": "shared_state",
+        "baseline_wall_seconds": 578.238,
+        "harness_wall_seconds": 593.635,
+        "wall_delta_percent": 2.663,
+        "baseline_tokens": 2468950,
+        "harness_tokens": 1378794,
+        "token_delta_percent": -44.155,
+        "baseline_score_sum": 285.0,
+        "harness_score_sum": 300.0,
+        "baseline_workers": 7,
+        "harness_workers": 0
+      },
+      {
+        "id": "auth_boundary",
+        "baseline_wall_seconds": 666.422,
+        "harness_wall_seconds": 547.781,
+        "wall_delta_percent": -17.803,
+        "baseline_tokens": 2171786,
+        "harness_tokens": 1075427,
+        "token_delta_percent": -50.482,
+        "baseline_score_sum": 295.0,
+        "harness_score_sum": 300.0,
+        "baseline_workers": 5,
+        "harness_workers": 0
+      },
+      {
+        "id": "unsupported_report",
+        "baseline_wall_seconds": 829.832,
+        "harness_wall_seconds": 661.387,
+        "wall_delta_percent": -20.299,
+        "baseline_tokens": 3900210,
+        "harness_tokens": 1520076,
+        "token_delta_percent": -61.026,
+        "baseline_score_sum": 295.0,
+        "harness_score_sum": 285.0,
+        "baseline_workers": 8,
+        "harness_workers": 0
+      }
+    ]
+  },
+  "pre_final_three_repeat": {
+    "baseline": {
+      "wall_time_seconds": 3344.48,
+      "total_tokens": 13314364,
+      "mean_quality_score": 98.889,
+      "quality_score_sum": 1780.0,
+      "passed": 18,
+      "worker_count": 33
+    },
+    "harness": {
+      "wall_time_seconds": 3504.84,
+      "total_tokens": 8160875,
+      "mean_quality_score": 98.715,
+      "quality_score_sum": 1776.875,
+      "passed": 16,
+      "worker_count": 8,
+      "worker_models": {"gpt-5.3-codex-spark/medium": 8}
+    },
+    "comparison": {
+      "wall_time_delta_percent": 4.795,
+      "total_token_delta_percent": -38.706,
+      "quality_delta_points": -0.174
+    },
+    "repetitions": [
+      {"id": "repeat-20260819-r1", "wall_delta_percent": -6.903, "token_delta_percent": -46.001, "baseline_score_sum": 595.0, "harness_score_sum": 595.625},
+      {"id": "repeat-20260819-r2", "wall_delta_percent": -6.754, "token_delta_percent": -45.397, "baseline_score_sum": 595.0, "harness_score_sum": 586.25},
+      {"id": "repeat-20260819-r3", "wall_delta_percent": 27.029, "token_delta_percent": -22.978, "baseline_score_sum": 590.0, "harness_score_sum": 595.0}
+    ]
+  },
+  "pilot_context": {
+    "run_id": "pilot-20260819-r1",
+    "repetitions": 1,
+    "baseline_wall_seconds": 965.207,
+    "harness_wall_seconds": 1097.435,
+    "wall_delta_percent": 13.70,
+    "baseline_tokens": 3395371,
+    "harness_tokens": 3432041,
+    "token_delta_percent": 1.08,
+    "quality_delta_points": 0.0
+  },
+  "acceptance": {
+    "false_positive_controls_fixed": "met",
+    "normal_control_commands_preserved": "met",
+    "tests_and_validators": "met",
+    "auth_tenant_safety": "met",
+    "quality_not_lower": "met",
+    "overall_wall_within_plus_5_percent": "met",
+    "tokens_at_or_below_baseline": "met",
+    "mapping_time_and_tokens_within_plus_10_percent": "met",
+    "shared_state_benefit": "partial: token and quality benefits retained; wall time was 2.663% slower",
+    "unsupported_report_benefit": "met for time and tokens; raw score was lower because of truthfulness-report wording",
+    "honest_failure_reporting": "met"
+  },
+  "global_state_after_benchmark": {
+    "configured": true,
+    "enabled": false,
+    "profile": "balanced",
+    "projects": 0,
+    "sessions": 0,
+    "one_shots": 0,
+    "state_sha256": "b0dc3614f4dc511cf02b0a549a702e3001bb337e4aae1f8411c2e5e01245c121"
+  },
+  "limitations": [
+    "The final harness created no workers, so Spark/medium delegation and failure fallback were not exercised in the final 36 runs.",
+    "Shared-state wall time was 2.663% slower despite lower tokens and higher quality.",
+    "Mapping and unsupported-report raw scores were sensitive to wording about local test execution even when the external grader passed the repository tests.",
+    "The cache directory name changed between repetitions, but every harness rollout contained the same revision-3 compact-policy hash and length.",
+    "The suite contains six fixtures and three repetitions, so it supports this workload set rather than a universal performance claim."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "adaptive-codex-orchestrator",
+  "interface": {
+    "displayName": "Adaptive Codex Orchestrator"
+  },
+  "plugins": [
+    {
+      "name": "adaptive-codex-orchestrator",
+      "source": {
+        "source": "local",
+        "path": "./plugins/adaptive-codex-orchestrator"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

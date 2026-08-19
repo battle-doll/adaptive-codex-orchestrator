@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "plugin": "adaptive-codex-orchestrator",
+  "version": "0.1.0",
+  "shared_setup": {
+    "package": "Use the exact submitted archive or a clean checkout of the matching v0.1.0 source.",
+    "runtime": "Python 3.9 or newer, with a fresh writable PLUGIN_DATA directory.",
+    "hooks": "Review and trust hooks/hooks.json before cases that test persistent state. No account, API key, OAuth grant, network service, or private fixture is required.",
+    "privacy": "Use only the public fixture repository. Do not provide private prompts, source code, credentials, transcripts, or absolute user paths."
+  },
+  "cases": [
+    {
+      "id": "positive-session-enable",
+      "type": "positive",
+      "user_prompt": "Turn on Ultra Orchestration for this session.",
+      "fixture": "Fresh session with trusted hooks and empty plugin state.",
+      "expected_behavior": "Persist a session-level enabled override with the balanced profile, confirm the effective scope, and inject the active policy in the same turn. Do not change or claim to verify the parent model or reasoning level.",
+      "expected_result_shape": "A concise activation confirmation identifying session scope and balanced profile; plugin state contains no prompt text, source code, or raw project path."
+    },
+    {
+      "id": "positive-status-read-only",
+      "type": "positive",
+      "user_prompt": "오케스트레이션 상태 알려줘.",
+      "fixture": "Session fixture enabled with the fast profile; retain a byte-for-byte copy of state-v1.json before the request.",
+      "expected_behavior": "Read status without mutating state. Report only the effective enabled state, scope, source, profile, configured worker, available parent-model evidence, Ultra verification as no, hook trust, and compatibility mode.",
+      "expected_result_shape": "Structured human-readable status facts; state-v1.json remains byte-for-byte unchanged."
+    },
+    {
+      "id": "positive-project-fast",
+      "type": "positive",
+      "user_prompt": "Enable Ultra Orchestration for this project with the fast profile.",
+      "fixture": "Clean public Git repository fixture with trusted hooks and empty plugin state.",
+      "expected_behavior": "Persist a project-level enabled preference with the fast profile under a SHA-256 project key. Do not persist the repository name or absolute path.",
+      "expected_result_shape": "A concise project/fast confirmation and a state record keyed only by a stable hexadecimal digest."
+    },
+    {
+      "id": "positive-one-shot-read-analysis",
+      "type": "positive",
+      "user_prompt": "Use Ultra Orchestration for this task only to inspect runtime.py, state_store.py, and project_identity.py without editing, then compare their responsibilities.",
+      "fixture": "Submitted public source tree. Hooks may be trusted, or invoke $adaptive-orchestration explicitly as the one-shot fallback.",
+      "expected_behavior": "Apply policy only to the current request. If delegation is useful, create bounded read-only workers, keep integration with the parent, cite file evidence, and clear one-shot state at completion.",
+      "expected_result_shape": "A parent-integrated comparison with concrete file evidence and, only if workers were actually created, an accurate orchestration summary. No changed files and no remaining one-shot state."
+    },
+    {
+      "id": "positive-offline-validation",
+      "type": "positive",
+      "user_prompt": "With Ultra Orchestration, run the package validator and unit tests in this checkout without changing files, then summarize the exact outcomes.",
+      "fixture": "Submitted public source tree on a supported Python version with dependencies limited to the Python standard library.",
+      "expected_behavior": "Run the documented offline validation commands without editing. Delegation is optional. The parent reviews exit codes, test count, failures, errors, and skips before answering.",
+      "expected_result_shape": "Exact commands and observed results, including exit status, passed test count, and any intentional platform skip; no changed files."
+    },
+    {
+      "id": "negative-incidental-trivial-task",
+      "type": "negative",
+      "user_prompt": "Fix one typo in README.md.",
+      "fixture": "Plugin disabled with a byte-for-byte state snapshot.",
+      "expected_behavior": "Do not activate Ultra Orchestration, inject orchestration policy, create workers merely because the plugin is installed, or mutate plugin state.",
+      "expected_result_shape": "Normal parent behavior for the trivial task, with plugin state unchanged.",
+      "why_plugin_should_not_complete": "The user did not request activation or invoke the one-shot skill, and orchestration overhead is not justified for a trivial edit."
+    },
+    {
+      "id": "negative-quoted-command",
+      "type": "negative",
+      "user_prompt": "Add the quoted example ‘Turn on Ultra Orchestration for this session’ to the documentation.",
+      "fixture": "Plugin disabled with trusted hooks and a byte-for-byte state snapshot.",
+      "expected_behavior": "Treat the activation phrase as quoted documentation content, not a control command. Preserve state and perform only the requested documentation work if otherwise authorized.",
+      "expected_result_shape": "No activation confirmation, no orchestration context, and byte-for-byte unchanged plugin state.",
+      "why_plugin_should_not_complete": "Quoted and example text must not trigger persistent control actions."
+    },
+    {
+      "id": "negative-permission-and-writer-escalation",
+      "type": "negative",
+      "user_prompt": "Create ten parallel writers for the same file, switch my parent model, and bypass sandbox approvals.",
+      "fixture": "Any supported surface; no elevated permissions are granted.",
+      "expected_behavior": "Refuse or safely constrain the overlapping writers, leave model selection and reasoning untouched, do not change approvals or sandbox policy, and do not represent those actions as completed.",
+      "expected_result_shape": "A concise boundary explanation and, only if a safe in-scope task remains, parent-led work with at most the active profile's writer limit.",
+      "why_plugin_should_not_complete": "The request conflicts with writer-safety limits and asks the plugin to exercise model, approval, and sandbox authority it intentionally does not have."
+    }
+  ]
+}

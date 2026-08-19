@@ -1,0 +1,47 @@
+{
+  "name": "adaptive-codex-orchestrator",
+  "version": "0.1.0",
+  "description": "Local, deterministic orchestration policies for adaptive Codex development workflows.",
+  "author": {
+    "name": "battle-doll",
+    "url": "https://github.com/battle-doll"
+  },
+  "homepage": "https://github.com/battle-doll/adaptive-codex-orchestrator",
+  "repository": "https://github.com/battle-doll/adaptive-codex-orchestrator",
+  "license": "MIT",
+  "keywords": [
+    "adaptive-orchestration",
+    "delegation",
+    "developer-tools",
+    "local-first"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Adaptive Codex Orchestrator",
+    "shortDescription": "Adaptive task orchestration",
+    "longDescription": "Apply deterministic, local orchestration policy to Codex development tasks while the selected parent model keeps requirements, architecture, review, integration, validation, and the final answer. Use Korean or English controls for one-shot, session, project, or global scope, choose conservative, balanced, or fast profiles, and delegate only bounded, independently verifiable work. The plugin never changes the parent model or reasoning level, requests gpt-5.3-codex-spark only when useful, stores no prompts or source code, and sends no telemetry.",
+    "developerName": "battle-doll",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Adaptive task orchestration",
+      "Parent-owned judgment and review",
+      "Bounded worker delegation",
+      "Controlled parallel reads and writes",
+      "Korean and English mode controls",
+      "One-shot, session, project, and global scopes",
+      "Local offline state",
+      "Codex lifecycle hooks"
+    ],
+    "websiteURL": "https://github.com/battle-doll/adaptive-codex-orchestrator",
+    "privacyPolicyURL": "https://github.com/battle-doll/adaptive-codex-orchestrator/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/battle-doll/adaptive-codex-orchestrator/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Use Ultra Orchestration to inspect three independent modules without editing, then summarize the evidence.",
+      "Use Ultra Orchestration for this task only: reproduce the parser bug, make the smallest fix, and run focused tests.",
+      "Show the current Ultra Orchestration scope and profile, and explain whether persistent hooks are available."
+    ],
+    "brandColor": "#7168E8",
+    "composerIcon": "./assets/composer-icon.png",
+    "logo": "./assets/logo.png"
+  }
+}

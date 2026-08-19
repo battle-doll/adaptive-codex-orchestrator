@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+*.tmp
+.coverage
+.pytest_cache/
+.DS_Store
+Thumbs.db
+dist/
+
+# Benchmark workspaces and raw rollouts may contain local paths and run IDs.
+benchmarks/*
+!benchmarks/runs/
+benchmarks/runs/*
+!benchmarks/runs/final-20260819-report/
+benchmarks/runs/final-20260819-report/*
+!benchmarks/runs/final-20260819-report/artifact.json
+!benchmarks/runs/final-20260819-report/REPORT.html
+!benchmarks/runs/final-20260819-report/verified_metrics.json

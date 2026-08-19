@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Adaptive Codex Orchestrator logo</title>
+  <desc id="desc">A reviewed orchestration boundary surrounding a central node, connected tasks, and a speed motif.</desc>
+  <defs>
+    <linearGradient id="surface" x1="82" y1="54" x2="438" y2="462" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#292F52"/>
+      <stop offset="1" stop-color="#111424"/>
+    </linearGradient>
+    <linearGradient id="boundary" x1="88" y1="74" x2="430" y2="438" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9188FF"/>
+      <stop offset="0.54" stop-color="#7168E8"/>
+      <stop offset="1" stop-color="#42D7C7"/>
+    </linearGradient>
+    <linearGradient id="core" x1="190" y1="174" x2="324" y2="338" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#978EFF"/>
+      <stop offset="1" stop-color="#554BCB"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#090B16" flood-opacity="0.42"/>
+    </filter>
+  </defs>
+  <rect x="24" y="24" width="464" height="464" rx="112" fill="url(#surface)"/>
+  <circle cx="256" cy="256" r="169" fill="none" stroke="#3C4369" stroke-width="22"/>
+  <path d="M165 113a169 169 0 0 1 219 52" fill="none" stroke="url(#boundary)" stroke-linecap="round" stroke-width="22"/>
+  <path d="M401 344a169 169 0 0 1-272 38" fill="none" stroke="url(#boundary)" stroke-linecap="round" stroke-width="22"/>
+  <g fill="none" stroke="#9AA4D1" stroke-linecap="round" stroke-width="18">
+    <path d="m179 180 44 43"/>
+    <path d="m333 180-44 43"/>
+    <path d="m179 332 44-43"/>
+    <path d="m333 332-44-43"/>
+  </g>
+  <g fill="#42D7C7" stroke="#171B31" stroke-width="14" filter="url(#shadow)">
+    <circle cx="158" cy="159" r="34"/>
+    <circle cx="354" cy="159" r="34"/>
+    <circle cx="158" cy="353" r="34"/>
+    <circle cx="354" cy="353" r="34"/>
+  </g>
+  <circle cx="256" cy="256" r="91" fill="url(#core)" stroke="#C0BAFF" stroke-width="16" filter="url(#shadow)"/>
+  <path d="m270 177-57 91h40l-13 70 61-99h-40z" fill="#FFFFFF" stroke="#FFFFFF" stroke-linejoin="round" stroke-width="7"/>
+  <path d="m397 135 18 18 36-42" fill="none" stroke="#42D7C7" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
+</svg>

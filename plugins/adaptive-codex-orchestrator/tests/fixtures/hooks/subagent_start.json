@@ -1,0 +1,11 @@
+{
+  "session_id": "fixture-session",
+  "transcript_path": null,
+  "cwd": ".",
+  "hook_event_name": "SubagentStart",
+  "model": "gpt-5.3-codex-spark",
+  "permission_mode": "default",
+  "turn_id": "fixture-turn",
+  "agent_id": "fixture-agent",
+  "agent_type": "worker"
+}

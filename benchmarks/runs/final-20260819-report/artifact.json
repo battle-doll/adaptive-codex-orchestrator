@@ -1,0 +1,305 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Adaptive Codex Orchestrator v0.1.0",
+    "description": "n=36 · T1–T6 · R1–R3 · B↔H",
+    "generatedAt": "2026-08-20T00:06:16+09:00",
+    "filters": [],
+    "cards": [],
+    "charts": [
+      {
+        "id": "task_delta_chart",
+        "title": "T1–T6 · Δ% · n=3",
+        "subtitle": "Δt < 0 / Δtok < 0",
+        "type": "bar",
+        "dataset": "task_deltas",
+        "sourceId": "task_delta_sql",
+        "palette": {
+          "kind": "categorical"
+        },
+        "valueFormat": "number",
+        "unit": "%",
+        "encodings": {
+          "x": {
+            "field": "task",
+            "type": "nominal",
+            "label": "T"
+          },
+          "y": {
+            "field": "delta_pct",
+            "type": "quantitative",
+            "label": "Δ%",
+            "format": "number",
+            "unit": "%"
+          },
+          "color": {
+            "field": "metric",
+            "type": "nominal",
+            "label": "M"
+          },
+          "tooltip": [
+            {
+              "field": "metric",
+              "type": "nominal",
+              "label": "M"
+            },
+            {
+              "field": "delta_pct",
+              "type": "quantitative",
+              "label": "Δ%",
+              "format": "number",
+              "unit": "%"
+            }
+          ]
+        }
+      }
+    ],
+    "tables": [],
+    "sources": [
+      {
+        "id": "verified_metrics",
+        "label": "verified_metrics.json",
+        "path": "verified_metrics.json"
+      },
+      {
+        "id": "task_delta_sql",
+        "label": "Δ(T1–T6)"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Adaptive Codex Orchestrator v0.1.0"
+      },
+      {
+        "id": "localized_report",
+        "type": "html",
+        "body": "<style>:root{color-scheme:light dark}*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;color:CanvasText;background:Canvas}.lang-choice{position:absolute;inline-size:1px;block-size:1px;opacity:0}.lang-label{display:inline-block;margin:0 .25rem .6rem 0;padding:.38rem .7rem;border:1px solid ButtonBorder;border-radius:999px;cursor:pointer}.lang-choice:focus-visible+.lang-label{outline:2px solid Highlight;outline-offset:2px}#lang-en:checked+label,#lang-ko:checked+label,#lang-ja:checked+label,#lang-zh:checked+label,#lang-ru:checked+label{color:HighlightText;background:Highlight}.panel{display:none;max-width:72rem}.panel h2{font-size:1.25rem;margin:1.15rem 0 .35rem}.panel h3{font-size:1rem;margin:1rem 0 .25rem}.panel ul{padding-left:1.25rem}.panel li{margin:.22rem 0}.callout{padding:.8rem 1rem;border-left:4px solid Highlight;background:color-mix(in srgb,Highlight 8%,Canvas)}code{font-size:.9em}details{margin:.8rem 0;padding:.55rem .7rem;border:1px solid ButtonBorder;border-radius:.5rem}summary{cursor:pointer;font-weight:650}#lang-en:checked~.panels>.en,#lang-ko:checked~.panels>.ko,#lang-ja:checked~.panels>.ja,#lang-zh:checked~.panels>.zh,#lang-ru:checked~.panels>.ru{display:block}@media(max-width:600px){body{font-size:14px}.lang-label{padding:.34rem .55rem}}</style><fieldset style='border:0;margin:0;padding:0'><legend><strong>Language · 언어 · 言語 · 语言 · Язык</strong></legend><input class='lang-choice' id='lang-en' name='locale' type='radio' checked><label class='lang-label' for='lang-en'>EN</label><input class='lang-choice' id='lang-ko' name='locale' type='radio'><label class='lang-label' for='lang-ko'>한국어</label><input class='lang-choice' id='lang-ja' name='locale' type='radio'><label class='lang-label' for='lang-ja'>日本語</label><input class='lang-choice' id='lang-zh' name='locale' type='radio'><label class='lang-label' for='lang-zh'>简体中文</label><input class='lang-choice' id='lang-ru' name='locale' type='radio'><label class='lang-label' for='lang-ru'>Русский</label><div class='panels'><article class='panel en' lang='en'><h2>Technical summary</h2><p class='callout'><strong>The final harness met the main efficiency and safety goals.</strong> Across 18 paired harness runs, quality rose from 98.125 to 98.646, wall time fell 14.324%, and unique-thread tokens fell 51.491%. The final harness created no workers, so the measured gain came from stricter activation, compact policy injection, task-aware parent-first routing, and avoiding duplicated exploration—not from Spark delegation.</p><h2>Results and goal status</h2><ul><li><strong>Overall:</strong> 2,858.524s vs 3,336.421s; 5,971,141 vs 12,309,398 tokens; 17/18 vs 16/18 passes.</li><li><strong>Four-module mapping:</strong> wall −18.527%, tokens −57.631%; the previous +52.55%/+19.40% regression was reversed.</li><li><strong>Shared state:</strong> tokens −44.155% and quality +5 points, but wall +2.663%; this goal is only partially met.</li><li><strong>Unsupported worker report:</strong> wall −20.299% and tokens −61.026%; raw score was 3.333 points lower because wording about pre-fix failures triggered the truthfulness regex.</li><li><strong>Before → final:</strong> the three-repeat harness changed from +4.795% wall / −38.706% tokens / −0.174 quality points / 8 workers to −14.324% / −51.491% / +0.521 / 0 workers.</li><li><strong>State restored:</strong> global orchestration is OFF, profile is balanced, and project/session/one-shot state is empty.</li></ul><h2>Root causes and focused changes</h2><ol><li>Generic Korean words such as mode and profile status were treated as control anchors. Parsing now requires a unique orchestration anchor; referential commands remain ambiguous without host-confirmed target context, and quotations/code fences are masked.</li><li>Profile ceilings acted like delegation targets. Effective caps now include task value: typo/single-file/report verification 0, local bug 0–1, small four-module map 0, and only substantial independent mapping up to two read-only explorers. One writer maximum and no nested delegation remain invariant.</li><li>Full policy text was repeatedly injected. Revision 3 emits a 1,175-character compact reminder once and lazy-loads routing, worker, and model detail only after delegation is selected.</li><li>Requested and host-confirmed models were blurred. Spark/medium remains a request; each delegated subtask gets one spawn attempt, then returns to the parent without retry or host-default substitution.</li><li>The parent previously re-ran broad worker exploration. Worker output is limited to six fields, and parent integration uses evidence spot-checks, gaps, and cross-boundary checks.</li></ol><details><summary>Changed files and regression coverage</summary><p><code>hooks/lib/command_parser.py</code>, <code>policy_loader.py</code>, <code>runtime.py</code>, <code>state_store.py</code>; the adaptive-orchestration skill and routing/runtime/worker/model references; policy evals and package validation; parser, hook, state, and package-validator tests; and matching public/i18n documentation.</p><p>Negative parser cases cover dark/test/production/edit modes, user profile status, referential disable, quotations, and fenced code. Positive controls retain Sol Ultra, global defaults, orchestration status, and English global disable. State tests cover global/project/session/one-shot precedence, missing Stop/turn_id expiry, timeout, and lock-contention cleanup.</p></details><h2>Validation and method</h2><p>108 Python unit tests passed (one expected POSIX-permission skip on Windows), 31 policy scenarios passed, and the package validator passed 1,969 assertions. Official plugin and skill validators also passed. The final benchmark used six unchanged fixtures, three paired repetitions per arm, alternating arm-first order, fresh one-commit Git repositories, sequential execution, the same Sol Ultra parent setting, and recursive unique-thread usage accounting. All 36 roots exited successfully; 69 unique threads had no missing, overlap, JSONL, or read warnings.</p><h2>Limits and decision</h2><p>This is descriptive evidence for six fixtures, not a universal speed guarantee. The final harness spawned no Spark workers, so actual Spark/medium delegation and fallback were not re-measured. Shared-state time did not preserve its original speed advantage, and two raw score areas remain wording-sensitive despite passing external repository tests. The cache directory name changed between repetitions, but every harness rollout carried the identical revision-3 policy hash and length.</p><p><strong>Recommendation:</strong> stop optimization here and keep v0.1.0 opt-in. The final suite proves practical efficiency for these complex tasks, but default-ON should wait for a separate, high-value benchmark that actually exercises large independent delegation and Spark failure handling.</p><div class='report-completeness'><h2>Chart key and delivery QA</h2><p class='key'><code>T1</code> typo · <code>T2</code> structure mapping · <code>T3</code> parser bug · <code>T4</code> shared state · <code>T5</code> authorization boundary · <code>T6</code> unsupported worker report. In the chart, <code>Δt</code> is wall-time change and <code>Δtok</code> is token change; negative is better.</p><details><summary>Report delivery QA</summary><p>The portable artifact passed schema validation, self-contained packaging, and structural verification. Installed Chrome could not reproduce the builder's chart-extraction environment, so per-report browser interaction and source-dialog QA are not certified. The semantic chart table and exact metrics remain available.</p></details></div></article><article class='panel ko' lang='ko'><h2>기술 요약</h2><p class='callout'><strong>최종 하네스는 핵심 효율·안전 목표를 충족했습니다.</strong> 하네스 18회에서 평균 품질은 98.125점에서 98.646점으로 높아졌고, 실행 시간은 14.324%, 고유 스레드 토큰은 51.491% 줄었습니다. 최종 하네스의 작업자는 0명이므로 이 이득은 Spark 위임이 아니라 엄격한 활성화, 압축 정책, 작업 인식 부모 우선 라우팅, 중복 탐색 제거에서 나왔습니다.</p><h2>결과와 목표 판정</h2><ul><li><strong>전체:</strong> 2,858.524초 대 3,336.421초, 5,971,141 대 12,309,398 토큰, 17/18 대 16/18 통과입니다.</li><li><strong>4모듈 구조 매핑:</strong> 시간 −18.527%, 토큰 −57.631%로 기존 +52.55%/+19.40% 회귀를 뒤집었습니다.</li><li><strong>공유 상태:</strong> 토큰 −44.155%, 품질 +5점이지만 시간은 +2.663%라 부분 충족입니다.</li><li><strong>무근거 작업자 보고 검증:</strong> 시간 −20.299%, 토큰 −61.026%입니다. 수정 전 실패를 설명한 문구가 정직성 정규식에 잡혀 원시 점수는 3.333점 낮았습니다.</li><li><strong>개선 전 → 최종:</strong> 3회 하네스가 시간 +4.795% / 토큰 −38.706% / 품질 −0.174점 / 작업자 8명에서 −14.324% / −51.491% / +0.521점 / 0명으로 바뀌었습니다.</li><li><strong>상태 복구:</strong> global은 OFF, profile은 balanced이며 project/session/one-shot 상태는 비어 있습니다.</li></ul><h2>근본 원인과 국소 변경</h2><ol><li>일반적인 ‘모드’와 ‘프로필 상태’를 제어 앵커로 해석했습니다. 이제 고유 오케스트레이션 앵커가 필요하고, 호스트가 대상을 확인하지 않은 지시어 명령은 ambiguous로 유지하며 인용문·코드 펜스를 마스킹합니다.</li><li>프로필 상한이 위임 목표처럼 작동했습니다. 오탈자·단일 파일·보고 검증은 0명, 국소 버그는 0–1명, 작은 4모듈 매핑은 0명, 충분한 독립 증거가 필요한 큰 매핑만 읽기 전용 Explorer 최대 2명입니다. writer 1명 이하와 nested delegation 금지는 유지합니다.</li><li>전체 정책을 반복 주입했습니다. revision 3은 1,175자 압축 알림을 한 번만 넣고, 실제 위임을 고른 뒤에만 라우팅·작업자·모델 상세를 지연 로드합니다.</li><li>요청 모델과 호스트 확인 모델을 혼동했습니다. Spark/medium은 요청값이며, 하위 작업마다 spawn 1회만 시도하고 실패하면 retry나 host-default 대체 없이 부모로 복귀합니다.</li><li>부모가 작업자의 광범위 탐색을 다시 수행했습니다. 작업자 결과를 정확한 6개 필드로 제한하고, 부모는 증거 표본·누락·교차 경계만 확인합니다.</li></ol><details><summary>변경 파일과 회귀 테스트</summary><p><code>hooks/lib/command_parser.py</code>, <code>policy_loader.py</code>, <code>runtime.py</code>, <code>state_store.py</code>, adaptive-orchestration 스킬과 routing/runtime/worker/model 참조, 정책 eval·패키지 검증, parser/hook/state/package-validator 테스트, 관련 공개·다국어 문서를 변경했습니다.</p><p>다크·테스트·프로덕션·편집 모드, 사용자 프로필 상태, 지시어 disable, 인용문, fenced code는 음성 회귀로 검증합니다. 솔 울트라, global 기본값, 오케스트레이션 status, 영어 global disable은 호환성을 유지합니다. 상태 테스트는 global/project/session/one-shot 우선순위, Stop/turn_id 누락 만료, timeout, lock 경합 cleanup을 포함합니다.</p></details><h2>검증과 방법</h2><p>Python 단위 테스트 108개가 통과했고 Windows에서는 POSIX 권한 검사 1개만 의도적으로 건너뛰었습니다. 정책 시나리오 31개와 패키지 validator 1,969개 assertion, 공식 plugin·skill validator가 통과했습니다. 최종 벤치마크는 변경하지 않은 6 fixture, arm별 3회, arm-first 교대, 매번 새 1-commit Git 저장소, 순차 실행, 동일 Sol Ultra 부모 설정, 재귀 고유 스레드 usage 집계를 사용했습니다. 36 root가 모두 정상 종료했고 69개 고유 thread에 누락·중복·JSONL·읽기 경고가 없었습니다.</p><h2>한계와 결정</h2><p>이는 6개 fixture에 대한 기술통계이며 보편적 속도 보장은 아닙니다. 최종 하네스는 Spark 작업자를 만들지 않아 실제 Spark/medium 위임·fallback을 다시 측정하지 못했습니다. 공유 상태 시간 이점은 유지되지 않았고, 외부 저장소 테스트는 통과했지만 두 점수 영역이 문구에 민감했습니다. 반복 사이 cache 디렉터리 이름이 바뀌었으나 모든 하네스 rollout의 revision-3 정책 hash와 길이는 동일했습니다.</p><p><strong>권고:</strong> 여기서 최적화를 멈추고 v0.1.0은 opt-in으로 유지합니다. 이번 복합 과제군에서는 실질 효율을 입증했지만, default-ON 판단은 큰 독립 위임과 Spark 실패 처리를 실제로 사용하는 고가치 벤치마크가 생길 때만 다시 검토하는 편이 안전합니다.</p><div class='report-completeness'><h2>차트 범례와 전달 QA</h2><p class='key'><code>T1</code> 오탈자 · <code>T2</code> 구조 매핑 · <code>T3</code> 파서 버그 · <code>T4</code> 공유 상태 · <code>T5</code> 권한 경계 · <code>T6</code> 무근거 작업자 보고. 차트의 <code>Δt</code>는 실행 시간 변화, <code>Δtok</code>는 토큰 변화이며 음수일수록 개선입니다.</p><details><summary>보고서 전달 QA</summary><p>휴대형 보고서는 스키마 검증, 자체 포함 패키징, 구조 검증을 통과했습니다. 설치된 Chrome이 빌더의 차트 추출 환경을 재현하지 못해 보고서별 브라우저 상호작용과 출처 대화상자 QA는 인증하지 못했습니다. 의미론적 차트 표와 정확한 메트릭은 그대로 제공됩니다.</p></details></div></article><article class='panel ja' lang='ja'><h2>技術概要</h2><p class='callout'><strong>最終 harness は主要な効率・安全目標を満たしました。</strong> harness 18 回で平均品質は 98.125 から 98.646 に上がり、wall time は 14.324%、unique-thread tokens は 51.491%減少しました。最終 harness の worker は 0 であり、効果は Spark 委任ではなく、厳格な activation、compact policy、task-aware parent-first routing、重複探索の除去によるものです。</p><h2>結果と目標判定</h2><ul><li><strong>全体:</strong> 2,858.524秒 対 3,336.421秒、5,971,141 対 12,309,398 tokens、17/18 対 16/18 pass。</li><li><strong>4 module mapping:</strong> wall −18.527%、tokens −57.631%。従来の +52.55%/+19.40% regression を反転しました。</li><li><strong>共有状態:</strong> tokens −44.155%、品質 +5点ですが、wall は +2.663%で部分達成です。</li><li><strong>根拠のない worker 報告検証:</strong> wall −20.299%、tokens −61.026%。修正前の失敗を説明した表現が truthfulness regex に反応し、raw score は 3.333点低下しました。</li><li><strong>修正前 → 最終:</strong> 3-repeat harness は wall +4.795% / tokens −38.706% / 品質 −0.174点 / worker 8 から −14.324% / −51.491% / +0.521点 / 0 に変わりました。</li><li><strong>状態復元:</strong> global は OFF、profile は balanced、project/session/one-shot は空です。</li></ul><h2>根本原因と局所修正</h2><ol><li>一般的な「モード」と「profile status」を制御 anchor として扱っていました。現在は固有の orchestration anchor を必須とし、host が対象を確認していない指示語は ambiguous のまま、引用と code fence は mask します。</li><li>profile 上限が委任目標のように働いていました。typo・単一 file・報告検証は 0、局所 bug は 0–1、小さな 4-module map は 0、十分な独立 evidence を要する大規模 mapping のみ read-only Explorer 最大 2 です。writer 1 以下と nested delegation 禁止は維持します。</li><li>全 policy を反復注入していました。revision 3 は 1,175文字の compact reminder を一度だけ注入し、実際に委任を選んだ後だけ routing・worker・model 詳細を lazy-load します。</li><li>requested model と host-confirmed model が混同されていました。Spark/medium は request であり、subtask ごとに spawn は 1 回、失敗時は retry や host-default 代替なしで parent に戻します。</li><li>parent が worker の広範な探索を再実行していました。worker 結果を正確な 6 field に制限し、parent は evidence spot-check、gap、cross-boundary のみ確認します。</li></ol><details><summary>変更 file と regression coverage</summary><p><code>hooks/lib/command_parser.py</code>、<code>policy_loader.py</code>、<code>runtime.py</code>、<code>state_store.py</code>、adaptive-orchestration skill と routing/runtime/worker/model references、policy eval・package validation、parser/hook/state/package-validator tests、関連する public/i18n docs を変更しました。</p><p>dark/test/production/edit mode、user profile status、referential disable、引用、fenced code を negative regression で確認します。Sol Ultra、global default、orchestration status、英語 global disable は互換性を維持します。state tests は global/project/session/one-shot precedence、Stop/turn_id 欠落時の expiry、timeout、lock contention cleanup を含みます。</p></details><h2>検証と方法</h2><p>Python unit tests 108件が通過し、Windows では POSIX permission test 1件のみ意図的に skip しました。policy scenarios 31件、package validator 1,969 assertions、official plugin/skill validators も通過しました。最終 benchmark は未変更の 6 fixtures、arm ごとに 3 回、arm-first 交互、毎回新しい 1-commit Git repo、逐次実行、同じ Sol Ultra parent 設定、recursive unique-thread usage accounting を使いました。36 roots は全て正常終了し、69 unique threads に missing・overlap・JSONL・read warning はありません。</p><h2>限界と判断</h2><p>これは 6 fixtures の記述統計であり普遍的な速度保証ではありません。最終 harness は Spark worker を作らず、実際の Spark/medium 委任・fallback は再測定されていません。共有状態の時間優位は維持されず、外部 repo tests は通過したものの二つの score 領域が表現に敏感でした。repeat 間で cache directory 名は変わりましたが、全 harness rollout の revision-3 policy hash と長さは同一です。</p><p><strong>推奨:</strong> ここで最適化を止め、v0.1.0 は opt-in を維持します。この複合 task 群では実効的な効率を示しましたが、default-ON は大規模な独立委任と Spark failure handling を実際に使う高価値 benchmark がある時だけ再検討すべきです。</p><div class='report-completeness'><h2>チャート凡例と配信 QA</h2><p class='key'><code>T1</code> 誤字 · <code>T2</code> 構造 mapping · <code>T3</code> parser bug · <code>T4</code> 共有状態 · <code>T5</code> 権限境界 · <code>T6</code> 根拠のない worker 報告。チャートの <code>Δt</code> は実行時間変化、<code>Δtok</code> は token 変化で、負の値ほど改善です。</p><details><summary>レポート配信 QA</summary><p>portable artifact は schema validation、self-contained packaging、structural verification を通過しました。インストール済み Chrome が builder の chart-extraction 環境を再現できなかったため、レポート単位の browser interaction と source-dialog QA は未認証です。semantic chart table と正確な metrics は引き続き利用できます。</p></details></div></article><article class='panel zh' lang='zh-CN'><h2>技术摘要</h2><p class='callout'><strong>最终 harness 达到了主要效率与安全目标。</strong>18 次 harness 运行中，平均质量从 98.125 提升到 98.646，wall time 降低 14.324%，unique-thread tokens 降低 51.491%。最终 harness 未创建 worker，因此收益来自更严格的 activation、compact policy、task-aware parent-first routing 和避免重复探索，而不是 Spark 委派。</p><h2>结果与目标判定</h2><ul><li><strong>总体:</strong> 2,858.524秒 对 3,336.421秒；5,971,141 对 12,309,398 tokens；17/18 对 16/18 pass。</li><li><strong>4 模块 mapping:</strong> wall −18.527%，tokens −57.631%，扭转了此前 +52.55%/+19.40% 的 regression。</li><li><strong>共享状态:</strong> tokens −44.155%、质量 +5分，但 wall +2.663%，因此仅部分达标。</li><li><strong>无依据 worker 报告验证:</strong> wall −20.299%，tokens −61.026%。对修复前失败的说明触发 truthfulness regex，raw score 低 3.333分。</li><li><strong>修正前 → 最终:</strong>三次重复的 harness 从 wall +4.795% / tokens −38.706% / 质量 −0.174分 / worker 8，变为 −14.324% / −51.491% / +0.521分 / 0。</li><li><strong>状态恢复:</strong>global 为 OFF，profile 为 balanced，project/session/one-shot 均为空。</li></ul><h2>根本原因与局部修改</h2><ol><li>普通的“模式”和“profile status”被当作控制 anchor。现在必须有唯一 orchestration anchor；host 未确认指代目标时保持 ambiguous，并屏蔽引用和 fenced code。</li><li>profile 上限像委派目标一样工作。拼写/单文件/报告验证为 0，局部 bug 为 0–1，小型 4-module map 为 0；只有需要大量独立证据的大型 mapping 才允许最多 2 个 read-only Explorer。writer 不超过 1，禁止 nested delegation。</li><li>完整 policy 被反复注入。revision 3 只注入一次 1,175字符 compact reminder，只有选择实际委派后才 lazy-load routing、worker 和 model 详情。</li><li>requested model 与 host-confirmed model 混淆。Spark/medium 只是请求值；每个 subtask 仅尝试一次 spawn，失败后不 retry、不替换为 host-default，直接交回 parent。</li><li>parent 会重新执行 worker 的广泛探索。现在 worker 结果仅允许精确的 6 个字段，parent 只做 evidence spot-check、gap 和 cross-boundary 检查。</li></ol><details><summary>修改文件与回归测试</summary><p>修改了 <code>hooks/lib/command_parser.py</code>、<code>policy_loader.py</code>、<code>runtime.py</code>、<code>state_store.py</code>，adaptive-orchestration skill 及 routing/runtime/worker/model references，policy eval、package validation，parser/hook/state/package-validator tests，以及相应 public/i18n docs。</p><p>negative regression 覆盖 dark/test/production/edit mode、user profile status、referential disable、引用和 fenced code。Sol Ultra、global default、orchestration status、英文 global disable 保持兼容。state tests 覆盖 global/project/session/one-shot precedence、缺少 Stop/turn_id 时的 expiry、timeout 与 lock contention cleanup。</p></details><h2>验证与方法</h2><p>108 个 Python unit tests 通过；Windows 上仅有 1 个预期的 POSIX permission skip。31 个 policy scenarios、package validator 的 1,969 个 assertions、official plugin/skill validators 全部通过。最终 benchmark 使用未修改的 6 个 fixtures，每个 arm 3 次、arm-first 交替、每次全新的单 commit Git repo、顺序执行、相同 Sol Ultra parent 设置，以及 recursive unique-thread usage accounting。36 个 roots 全部正常结束，69 个 unique threads 没有 missing、overlap、JSONL 或 read warning。</p><h2>限制与决定</h2><p>这是针对 6 个 fixtures 的描述性证据，不是普遍速度保证。最终 harness 没有创建 Spark worker，因此实际 Spark/medium 委派与 fallback 未重新测量。共享状态的时间优势未保留；尽管外部 repo tests 通过，两项 raw score 仍对措辞敏感。重复之间 cache directory 名称变化，但所有 harness rollout 的 revision-3 policy hash 与长度完全一致。</p><p><strong>建议:</strong>在此停止优化，并保持 v0.1.0 为 opt-in。本组复杂任务已证明实际效率，但 default-ON 应等到有高价值 benchmark 真正覆盖大规模独立委派和 Spark failure handling 时再评估。</p><div class='report-completeness'><h2>图表图例与交付 QA</h2><p class='key'><code>T1</code> 拼写修改 · <code>T2</code> 结构 mapping · <code>T3</code> parser bug · <code>T4</code> 共享状态 · <code>T5</code> 权限边界 · <code>T6</code> 无依据 worker 报告。图表中 <code>Δt</code> 表示运行时间变化，<code>Δtok</code> 表示 token 变化；负值越大代表改善越多。</p><details><summary>报告交付 QA</summary><p>portable artifact 已通过 schema validation、self-contained packaging 和 structural verification。已安装 Chrome 无法复现 builder 的 chart-extraction 环境，因此未认证报告级 browser interaction 与 source-dialog QA。semantic chart table 和精确 metrics 仍可使用。</p></details></div></article><article class='panel ru' lang='ru'><h2>Техническое резюме</h2><p class='callout'><strong>Финальный harness достиг основных целей эффективности и безопасности.</strong> В 18 запусках среднее качество выросло с 98.125 до 98.646, wall time снизилось на 14.324%, а unique-thread tokens — на 51.491%. Финальный harness не создавал workers: выигрыш получен за счёт строгой activation, compact policy, task-aware parent-first routing и устранения повторного исследования, а не за счёт делегирования Spark.</p><h2>Результаты и статус целей</h2><ul><li><strong>Итого:</strong> 2,858.524с против 3,336.421с; 5,971,141 против 12,309,398 tokens; 17/18 против 16/18 pass.</li><li><strong>Mapping четырёх модулей:</strong> wall −18.527%, tokens −57.631%; прежняя regression +52.55%/+19.40% устранена.</li><li><strong>Общее состояние:</strong> tokens −44.155% и качество +5 пунктов, но wall +2.663%; цель выполнена частично.</li><li><strong>Проверка необоснованного отчёта worker:</strong> wall −20.299%, tokens −61.026%. Описание ошибки до исправления сработало на truthfulness regex, поэтому raw score ниже на 3.333 пункта.</li><li><strong>До → финал:</strong> harness в трёх повторах изменился с wall +4.795% / tokens −38.706% / качество −0.174 / 8 workers на −14.324% / −51.491% / +0.521 / 0 workers.</li><li><strong>Состояние восстановлено:</strong> global OFF, profile balanced, project/session/one-shot пусты.</li></ul><h2>Первопричины и локальные изменения</h2><ol><li>Обычные слова «режим» и «profile status» считались управляющими anchors. Теперь нужен уникальный orchestration anchor; указательные команды без подтверждённой host-цели остаются ambiguous, цитаты и fenced code маскируются.</li><li>Пределы profile работали как цели делегирования. Опечатка/один файл/проверка отчёта — 0, локальный bug — 0–1, небольшой 4-module map — 0; до двух read-only Explorers разрешены только для крупного mapping с существенными независимыми доказательствами. Не более одного writer и никакой nested delegation.</li><li>Полный policy вводился повторно. Revision 3 один раз вводит compact reminder длиной 1,175 символов и lazy-load деталей routing, worker и model только после выбора делегирования.</li><li>Requested и host-confirmed models смешивались. Spark/medium остаётся запросом; для subtask допускается одна попытка spawn, затем возврат parent без retry и подмены на host-default.</li><li>Parent повторял широкое исследование worker. Результат worker ограничен ровно шестью полями, а parent проверяет только evidence samples, gaps и cross-boundaries.</li></ol><details><summary>Изменённые файлы и regression coverage</summary><p>Изменены <code>hooks/lib/command_parser.py</code>, <code>policy_loader.py</code>, <code>runtime.py</code>, <code>state_store.py</code>; adaptive-orchestration skill и routing/runtime/worker/model references; policy eval и package validation; parser/hook/state/package-validator tests; соответствующие public/i18n docs.</p><p>Negative regressions охватывают dark/test/production/edit mode, user profile status, referential disable, цитаты и fenced code. Сохранены Sol Ultra, global default, orchestration status и английский global disable. State tests покрывают global/project/session/one-shot precedence, expiry без Stop/turn_id, timeout и cleanup при lock contention.</p></details><h2>Проверка и метод</h2><p>Прошли 108 Python unit tests; на Windows ожидаемо пропущен один POSIX permission test. Прошли 31 policy scenarios, 1,969 assertions package validator и official plugin/skill validators. Финальный benchmark использовал неизменённые 6 fixtures, по 3 повтора на arm, чередование arm-first, новый одно-коммитный Git repo для каждого запуска, последовательное выполнение, одинаковый Sol Ultra parent и recursive unique-thread usage accounting. Все 36 roots завершились успешно; для 69 unique threads нет missing, overlap, JSONL или read warnings.</p><h2>Ограничения и решение</h2><p>Это описательная статистика для 6 fixtures, а не универсальная гарантия скорости. Финальный harness не создавал Spark workers, поэтому реальное делегирование Spark/medium и fallback повторно не измерялись. Время shared-state не сохранило прежнее преимущество, а две области raw score чувствительны к формулировкам, хотя внешние repo tests прошли. Имя cache directory менялось между повторами, но hash и длина revision-3 policy во всех harness rollout идентичны.</p><p><strong>Рекомендация:</strong> остановить оптимизацию здесь и оставить v0.1.0 в режиме opt-in. Для этой группы сложных задач практическая эффективность доказана, но default-ON стоит пересматривать только при наличии ценного benchmark, реально использующего крупное независимое делегирование и Spark failure handling.</p><div class='report-completeness'><h2>Легенда графика и QA доставки</h2><p class='key'><code>T1</code> опечатка · <code>T2</code> mapping структуры · <code>T3</code> ошибка parser · <code>T4</code> общее состояние · <code>T5</code> граница полномочий · <code>T6</code> необоснованный отчёт worker. На графике <code>Δt</code> — изменение времени, <code>Δtok</code> — изменение tokens; отрицательное значение лучше.</p><details><summary>QA доставки отчёта</summary><p>Portable artifact прошёл schema validation, self-contained packaging и structural verification. Установленный Chrome не воспроизвёл среду chart-extraction builder, поэтому browser interaction и source-dialog QA для отчёта не сертифицированы. Semantic chart table и точные metrics остаются доступными.</p></details></div></article></div></fieldset>"
+      },
+      {
+        "id": "task_chart",
+        "type": "chart",
+        "chartId": "task_delta_chart",
+        "layout": "full"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-20T00:06:16+09:00",
+    "status": "ready",
+    "datasets": {
+      "phase_deltas": [
+        {
+          "phase": "Pre-final",
+          "metric": "Wall time",
+          "delta_pct": 4.795
+        },
+        {
+          "phase": "Pre-final",
+          "metric": "Tokens",
+          "delta_pct": -38.706
+        },
+        {
+          "phase": "Final",
+          "metric": "Wall time",
+          "delta_pct": -14.324
+        },
+        {
+          "phase": "Final",
+          "metric": "Tokens",
+          "delta_pct": -51.491
+        }
+      ],
+      "task_deltas": [
+        {
+          "task": "T1",
+          "metric": "Δt",
+          "delta_pct": -1.188
+        },
+        {
+          "task": "T1",
+          "metric": "Δtok",
+          "delta_pct": -4.468
+        },
+        {
+          "task": "T2",
+          "metric": "Δt",
+          "delta_pct": -18.527
+        },
+        {
+          "task": "T2",
+          "metric": "Δtok",
+          "delta_pct": -57.631
+        },
+        {
+          "task": "T3",
+          "metric": "Δt",
+          "delta_pct": -20.061
+        },
+        {
+          "task": "T3",
+          "metric": "Δtok",
+          "delta_pct": -47.878
+        },
+        {
+          "task": "T4",
+          "metric": "Δt",
+          "delta_pct": 2.663
+        },
+        {
+          "task": "T4",
+          "metric": "Δtok",
+          "delta_pct": -44.155
+        },
+        {
+          "task": "T5",
+          "metric": "Δt",
+          "delta_pct": -17.803
+        },
+        {
+          "task": "T5",
+          "metric": "Δtok",
+          "delta_pct": -50.482
+        },
+        {
+          "task": "T6",
+          "metric": "Δt",
+          "delta_pct": -20.299
+        },
+        {
+          "task": "T6",
+          "metric": "Δtok",
+          "delta_pct": -61.026
+        }
+      ],
+      "repeat_results": [
+        {
+          "order": 1,
+          "phase": "Pre-final",
+          "repeat": "R1",
+          "wall_delta_pct": -6.903,
+          "token_delta_pct": -46.001,
+          "baseline_score": 595.0,
+          "harness_score": 595.625
+        },
+        {
+          "order": 2,
+          "phase": "Pre-final",
+          "repeat": "R2",
+          "wall_delta_pct": -6.754,
+          "token_delta_pct": -45.397,
+          "baseline_score": 595.0,
+          "harness_score": 586.25
+        },
+        {
+          "order": 3,
+          "phase": "Pre-final",
+          "repeat": "R3",
+          "wall_delta_pct": 27.029,
+          "token_delta_pct": -22.978,
+          "baseline_score": 590.0,
+          "harness_score": 595.0
+        },
+        {
+          "order": 4,
+          "phase": "Final",
+          "repeat": "R1",
+          "wall_delta_pct": -14.867,
+          "token_delta_pct": -50.197,
+          "baseline_score": 590.625,
+          "harness_score": 590.625
+        },
+        {
+          "order": 5,
+          "phase": "Final",
+          "repeat": "R2",
+          "wall_delta_pct": -23.082,
+          "token_delta_pct": -53.938,
+          "baseline_score": 590.0,
+          "harness_score": 590.0
+        },
+        {
+          "order": 6,
+          "phase": "Final",
+          "repeat": "R3",
+          "wall_delta_pct": -4.26,
+          "token_delta_pct": -50.535,
+          "baseline_score": 585.625,
+          "harness_score": 595.0
+        }
+      ],
+      "task_results": [
+        {
+          "task": "Typo",
+          "wall_delta_pct": -1.188,
+          "token_delta_pct": -4.468,
+          "baseline_score": 100.0,
+          "harness_score": 100.0,
+          "harness_workers": 0
+        },
+        {
+          "task": "Mapping",
+          "wall_delta_pct": -18.527,
+          "token_delta_pct": -57.631,
+          "baseline_score": 97.083,
+          "harness_score": 96.875,
+          "harness_workers": 0
+        },
+        {
+          "task": "Parser bug",
+          "wall_delta_pct": -20.061,
+          "token_delta_pct": -47.878,
+          "baseline_score": 100.0,
+          "harness_score": 100.0,
+          "harness_workers": 0
+        },
+        {
+          "task": "Shared state",
+          "wall_delta_pct": 2.663,
+          "token_delta_pct": -44.155,
+          "baseline_score": 95.0,
+          "harness_score": 100.0,
+          "harness_workers": 0
+        },
+        {
+          "task": "Auth boundary",
+          "wall_delta_pct": -17.803,
+          "token_delta_pct": -50.482,
+          "baseline_score": 98.333,
+          "harness_score": 100.0,
+          "harness_workers": 0
+        },
+        {
+          "task": "Report check",
+          "wall_delta_pct": -20.299,
+          "token_delta_pct": -61.026,
+          "baseline_score": 98.333,
+          "harness_score": 95.0,
+          "harness_workers": 0
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "verified_metrics",
+      "label": "verified_metrics.json",
+      "path": "verified_metrics.json"
+    },
+    {
+      "id": "task_delta_sql",
+      "label": "Δ(T1–T6)",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "executed_at": "2026-08-20T00:06:16+09:00",
+        "description": "Δ(T1–T6), n=3",
+        "sql": "WITH reviewed(task, metric, delta_pct) AS (VALUES ('T1','Δt',-1.188),('T1','Δtok',-4.468),('T2','Δt',-18.527),('T2','Δtok',-57.631),('T3','Δt',-20.061),('T3','Δtok',-47.878),('T4','Δt',2.663),('T4','Δtok',-44.155),('T5','Δt',-17.803),('T5','Δtok',-50.482),('T6','Δt',-20.299),('T6','Δtok',-61.026)) SELECT task, metric, delta_pct FROM reviewed ORDER BY task, metric"
+      }
+    }
+  ]
+}
