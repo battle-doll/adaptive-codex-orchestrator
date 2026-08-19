@@ -15,9 +15,9 @@ developer's later **Publish** action are separate states.
 
 - File: `adaptive-codex-orchestrator-0.1.0.zip`
 - Files: `88`
-- Compressed size: `257,831` bytes
-- Uncompressed size: `603,339` bytes
-- SHA-256: `5342258177c1dd115f68e52a1e5596146632ed92251dd4d94a132636d63f7b66`
+- Compressed size: `257,916` bytes
+- Uncompressed size: `603,482` bytes
+- SHA-256: `62e2332439ed43ba5792c415902c838f9bedc19052bcf6acd21a3f49260b79f1`
 
 Two independent builds were byte-identical. The SHA-256 sidecar, safe archive
 inspection, trusted-source byte comparison, and isolated smoke import passed.

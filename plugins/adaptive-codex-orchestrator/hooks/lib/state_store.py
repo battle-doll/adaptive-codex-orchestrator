@@ -17,7 +17,9 @@ from typing import Callable, Dict, Iterator, Mapping, MutableMapping, Optional
 SCHEMA_VERSION = 1
 PROFILES = frozenset({"conservative", "balanced", "fast"})
 SESSION_TTL_SECONDS = 30 * 24 * 60 * 60
-STATE_LOCK_TIMEOUT_SECONDS = 0.75
+# Leave enough headroom for a short burst of durable, fsync-backed updates on
+# slower hosts while keeping lock failures bounded and fail-safe.
+STATE_LOCK_TIMEOUT_SECONDS = 2.0
 
 
 class StateUnavailableError(RuntimeError):
