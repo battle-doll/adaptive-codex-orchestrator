@@ -3,18 +3,47 @@
 **English** · [한국어](README.ko.md) · [日本語](README.ja.md) ·
 [简体中文](README.zh-CN.md) · [Русский](README.ru.md)
 
+Control when Codex delegates bounded work: choose the task, session, project,
+or global scope, select a profile, and keep parent review and safe parallel
+execution explicit. Adaptive Codex Orchestrator is for developers who want
+delegation controls on demand—not automatic multi-agent routing for every task.
+
+> Publication status, verified 2026-08-29: [v0.1.0 is Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)
+> in OpenAI Platform and remote-catalog `GLOBAL` / `AVAILABLE` / `UNLISTED`.
+> The first publication date is unknown. v0.1.1 is an unsubmitted update
+> candidate; no LISTED status is claimed.
+
+## Install or use
+
+- Open the exact [published v0.1.0 plugin page](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821).
+  Because it is `UNLISTED`, do not expect directory search or browse placement.
+- Review the local hooks before trust; use the source installation steps below
+  for Codex development.
+- This branch prepares v0.1.1 for a future update submission and is not the
+  published package.
+
+## Try it
+
+```text
+Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.
+오케스트레이션 상태, 범위, 프로필을 알려줘.
+```
+
+## Key boundaries
+
+- Explicit controls only: enable, disable, status, scope, profile, or
+  `$adaptive-orchestration`. The product name is not required.
+- Do not activate merely because ordinary work could be parallelized or
+  delegated. Answer-style, mentor-mode, learning, advice, brainstorming, and
+  critique requests are also outside this plugin unless paired with a separate
+  explicit orchestration control.
+- The parent owns requirements, architecture, integration, validation, and the
+  final answer; at most one writer runs concurrently.
+- The plugin does not change models, reasoning, permissions, approvals, the
+  sandbox, or network access, and stores no prompts or source code.
+
 > Independent community project. Adaptive Codex Orchestrator is not
 > affiliated with, endorsed by, or an official product of OpenAI.
-
-Adaptive Codex Orchestrator is a Codex-focused, offline plugin that adds a
-deterministic control plane for optional, bounded task orchestration. It keeps
-requirements, architecture, integration, validation, and the final answer
-with the selected parent model while allowing narrow independent work to be
-delegated when that is genuinely useful.
-
-This repository is the public-review source for version `0.1.0`. A GitHub
-release, review submission, approval, and publication are separate states;
-none should be inferred from the repository being public.
 
 ## What it adds
 

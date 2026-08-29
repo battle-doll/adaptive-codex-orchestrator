@@ -3,19 +3,41 @@
 [English](README.md) · [한국어](README.ko.md) · **日本語** ·
 [简体中文](README.zh-CN.md) · [Русский](README.ru.md)
 
+Codex が限定された作業をいつ委任するかを明示的に制御できます。タスク、
+セッション、プロジェクト、グローバルのスコープとプロファイルを選び、親の
+レビューと安全な並列実行を維持します。すべての作業を自動でマルチエージェント
+化するものではなく、必要なときだけ委任を制御したい開発者向けです。
+
+> 公開状況（2026-08-29 確認）: [v0.1.0 は Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)、
+> リモートカタログでは `GLOBAL` / `AVAILABLE` / `UNLISTED` です。初回公開日は
+> 不明です。v0.1.1 は未提出の更新候補で、LISTED 状態は主張しません。
+
+## インストールまたは使用
+
+- 正確な[公開済み v0.1.0 プラグインページ](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)を
+  開きます。`UNLISTED` はディレクトリ検索・閲覧面への掲載を意味しません。
+- trust 前に hooks を確認し、Codex 開発用の source installation は下の手順に従います。
+- この branch は将来提出する v0.1.1 候補で、現在公開済みの package ではありません。
+
+## 試す
+
+```text
+Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.
+Show orchestration status, scope, and profile.
+```
+
+## 主要な境界
+
+- enable、disable、status、scope、profile、または `$adaptive-orchestration`
+  という明示的制御だけが対象です。製品名は不要です。
+- 通常の作業が並列化・委任できるという理由だけでは起動しません。回答スタイル、
+  メンターモード、学習、助言、ブレインストーミング、批評も対象外です。
+- 要件、設計、統合、検証、最終回答は親が所有し、同時 writer は最大 1 です。
+- model、reasoning、権限、承認、sandbox、network を変更せず、prompt や source
+  code を保存しません。
+
 > Adaptive Codex Orchestrator は独立したコミュニティプロジェクトです。
 > OpenAI と提携しておらず、OpenAI が後援・推奨する公式製品でもありません。
-
-Adaptive Codex Orchestrator は、Codex 向けのローカルかつオフラインの
-オーケストレーションハーネスです。決定論的な Python 制御プレーンが、
-任意の実行モード **Ultra Orchestration** の韓国語・英語コマンド、状態、
-プロジェクト識別子、フックコンテキストを処理します。要件、設計、委任の
-判断、結果のレビュー、統合、最終検証、ユーザーへの回答は、ユーザーが
-選択した親モデルが引き続き担当します。
-
-現在の `0.1.0` は公開レビュー候補です。GitHub でのソース公開、OpenAI
-へのレビュー提出、承認、開発者による Publish は別々の状態であり、
-リポジトリの公開だけで後続の状態まで完了したことにはなりません。
 
 ## 主な機能と境界
 

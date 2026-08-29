@@ -1,19 +1,43 @@
 # Adaptive Codex Orchestrator
 
+Control when Codex delegates bounded work: choose the task, session, project,
+or global scope, select a profile, and keep parent review and safe parallel
+execution explicit. This package is for developers who want delegation
+controls on demand—not automatic multi-agent routing for every task.
+
+> Publication status, verified 2026-08-29: [v0.1.0 is Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)
+> and remote-catalog `GLOBAL` / `AVAILABLE` / `UNLISTED`. The first publication
+> date is unknown. v0.1.1 is an unsubmitted update candidate; see the
+> repository [submission notes](../../SUBMISSION.md).
+
+## Install or use
+
+- Open the exact [published v0.1.0 plugin page](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821).
+  `UNLISTED` does not imply directory search or browse placement.
+- Review `hooks/hooks.json` and `hooks/runtime.py` before trust, then follow the
+  installation instructions below for source-based Codex development.
+- This source tree prepares v0.1.1 and is not the published package.
+
+## Try it
+
+```text
+Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.
+오케스트레이션 상태, 범위, 프로필을 알려줘.
+```
+
+## Key boundaries
+
+- Explicit controls only: enable, disable, status, scope, profile, or
+  `$adaptive-orchestration`; knowing the product name is unnecessary.
+- Ordinary parallelizable work and answer-style, mentor-mode, learning, advice,
+  brainstorming, or critique requests do not activate this plugin.
+- The parent retains requirements, architecture, integration, validation, and
+  the final answer, with at most one concurrent writer.
+- No model, reasoning, permission, approval, sandbox, or network change; no
+  prompt, transcript, source-code, or raw-path persistence.
+
 > Independent community project. Adaptive Codex Orchestrator is not affiliated
 > with, endorsed by, or an official product of OpenAI.
-
-Adaptive Codex Orchestrator is a Codex-focused, offline orchestration harness.
-It adds deterministic Korean and English controls for an optional runtime mode
-named **Ultra Orchestration** while keeping requirements, architecture,
-integration, validation, and the final answer with the selected parent model.
-The configured fast worker is `gpt-5.3-codex-spark`, but the plugin reports that
-model as used only when the host confirms it.
-
-This package is the `0.1.0` public-review candidate. GitHub availability,
-OpenAI review submission, approval, and the developer-controlled Publish action
-are separate states; see the repository [submission notes](../../SUBMISSION.md)
-for the candidate metadata without inferring a later state.
 
 The latest offline results are recorded in
 [Validation](docs/VALIDATION.md).

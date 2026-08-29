@@ -1,10 +1,15 @@
 # Localization index
 
-Adaptive Codex Orchestrator public documentation is proposed in five
+Adaptive Codex Orchestrator public documentation is maintained in five
 languages. English source documents remain canonical when a translation and
 the maintained source differ. Technical identifiers, commands, URLs, the
 `MIT License` name, and the non-affiliation and warranty meaning are not
 localized into different claims.
+
+Verified on 2026-08-29: v0.1.0 is Published and remote-catalog `GLOBAL` /
+`AVAILABLE` / `UNLISTED`; v0.1.1 is an unsubmitted update candidate. Each
+localized README keeps the same explicit-control discovery boundary and does
+not add command-language support beyond Korean and English.
 
 | Language | README | Publishing | Submission | Support | Security | Privacy | Terms |
 | --- | --- | --- | --- | --- | --- | --- | --- |
