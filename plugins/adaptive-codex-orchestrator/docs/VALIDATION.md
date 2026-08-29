@@ -97,7 +97,7 @@ claim is present.
 ```text
 python -B plugins/adaptive-codex-orchestrator/scripts/build_release.py
 python -B plugins/adaptive-codex-orchestrator/scripts/validate_release_artifact.py \
-  plugins/adaptive-codex-orchestrator/dist/adaptive-codex-orchestrator-0.1.0.zip \
+  plugins/adaptive-codex-orchestrator/dist/adaptive-codex-orchestrator-0.1.1.zip \
   --trusted-source-root plugins/adaptive-codex-orchestrator \
   --require-sidecar
 ```

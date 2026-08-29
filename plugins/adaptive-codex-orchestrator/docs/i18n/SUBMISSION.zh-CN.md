@@ -3,9 +3,14 @@
 [English](SUBMISSION.md) · [한국어](SUBMISSION.ko.md) · [日本語](SUBMISSION.ja.md) ·
 **简体中文** · [Русский](SUBMISSION.ru.md)
 
-审核日期：**2026-08-19**
+审核日期：**2026-08-29**
 
-状态：**已在本地准备；尚未提交、批准或发布**。
+状态：**v0.1.0 已 Published，远程目录为 `GLOBAL` / `AVAILABLE` /
+`UNLISTED`；v0.1.1 是尚未提交的更新候选版本**。
+
+准确的 v0.1.0 页面为
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>。
+首次发布日期未知，不声称具有 LISTED 状态。
 
 本文是公开审核摘要。详细的所有者门槛见[发布清单](../PUBLISHING.md)，已执行的
 本地证据见[验证记录](../VALIDATION.md)。本文不授权 tag、push、release、部署、
@@ -16,9 +21,9 @@ marketplace 注册或外部提交。
 英文版的[准确门户列表值](SUBMISSION.md#exact-portal-listing-candidate)逐项反映当前
 manifest。关键值如下：
 
-- 包 `adaptive-codex-orchestrator`，版本 `0.1.0`
+- 包 `adaptive-codex-orchestrator`，版本 `0.1.1`
 - 显示名称 `Adaptive Codex Orchestrator`
-- 副标题 `Adaptive task orchestration`
+- 副标题 `Explicit bounded orchestration`
 - 发布者 `battle-doll`，类别 `Developer Tools`，许可证 `MIT`
 - 运行模式 `Ultra Orchestration`，请求工作器 `gpt-5.3-codex-spark`
 - 颜色 `#7168E8`，`./assets/composer-icon.png`（48×48），`./assets/logo.png`（256×256）。

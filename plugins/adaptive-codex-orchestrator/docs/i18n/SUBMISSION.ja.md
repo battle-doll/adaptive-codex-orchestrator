@@ -3,9 +3,14 @@
 [English](SUBMISSION.md) · [한국어](SUBMISSION.ko.md) · **日本語** ·
 [简体中文](SUBMISSION.zh-CN.md) · [Русский](SUBMISSION.ru.md)
 
-レビュー日: **2026-08-19**
+レビュー日: **2026-08-29**
 
-状態: **ローカルで準備済み、未提出・未承認・未公開**。
+状態: **v0.1.0 は Published でリモートカタログ `GLOBAL` / `AVAILABLE` /
+`UNLISTED`、v0.1.1 は未提出の更新候補**。
+
+正確な v0.1.0 ページは
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>です。
+初回公開日は不明で、LISTED 状態は主張しません。
 
 これは公開レビュー向け要約です。詳細な owner gate は
 [Publishing](../PUBLISHING.md)、実行済みローカル証拠は
@@ -17,9 +22,9 @@ deploy、marketplace 登録、外部提出を許可しません。
 英語版の[正確な portal listing](SUBMISSION.md#exact-portal-listing-candidate)は
 現在の manifest をそのまま反映しています。主要値は次のとおりです。
 
-- package `adaptive-codex-orchestrator`、version `0.1.0`
+- package `adaptive-codex-orchestrator`、version `0.1.1`
 - display name `Adaptive Codex Orchestrator`
-- subtitle `Adaptive task orchestration`
+- subtitle `Explicit bounded orchestration`
 - publisher `battle-doll`、category `Developer Tools`、license `MIT`
 - runtime mode `Ultra Orchestration`、requested worker `gpt-5.3-codex-spark`
 - color `#7168E8`、`./assets/composer-icon.png` (48×48)、`./assets/logo.png` (256×256)。

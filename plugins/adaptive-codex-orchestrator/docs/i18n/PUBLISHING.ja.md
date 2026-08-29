@@ -8,10 +8,11 @@
 
 ## 現在の状態
 
-Adaptive Codex Orchestrator `0.1.0` は未公開の public-review candidate です。
-この repository の内容は、提出、承認、deploy、marketplace acceptance
-を意味しません。公開は、すべての該当 gate を通過した後に repository
-owner が明示的に実行する操作です。
+2026-08-29 確認: `0.1.0` は OpenAI Platform で Published、リモート
+カタログでは `GLOBAL` / `AVAILABLE`、discoverability `UNLISTED` です:
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>。
+初回公開日は確認できません。`0.1.1` は未提出の更新候補であり、この
+repository は更新の提出、承認、公開、LISTED 状態を意味しません。
 
 本プロジェクトは独立した community tool であり、OpenAI の提携・後援・
 推奨・公式製品であるかのように表示してはいけません。

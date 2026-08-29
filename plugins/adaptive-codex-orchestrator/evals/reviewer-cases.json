@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "plugin": "adaptive-codex-orchestrator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "shared_setup": {
-    "package": "Use the exact submitted archive or a clean checkout of the matching v0.1.0 source.",
+    "package": "Use the exact update-candidate archive or a clean checkout of the matching v0.1.1 source.",
     "runtime": "Python 3.9 or newer, with a fresh writable PLUGIN_DATA directory.",
     "hooks": "Review and trust hooks/hooks.json before cases that test persistent state. No account, API key, OAuth grant, network service, or private fixture is required.",
     "privacy": "Use only the public fixture repository. Do not provide private prompts, source code, credentials, transcripts, or absolute user paths."

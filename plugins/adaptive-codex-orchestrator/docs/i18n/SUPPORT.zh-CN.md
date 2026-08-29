@@ -3,9 +3,10 @@
 [English](SUPPORT.md) · [한국어](SUPPORT.ko.md) ·
 [日本語](SUPPORT.ja.md) · **简体中文** · [Русский](SUPPORT.ru.md)
 
-> Adaptive Codex Orchestrator `0.1.0` 是尚未发布的 public-review candidate。
+> 2026-08-29 已验证：`0.1.0` 已 Published，远程目录记录为
+> `GLOBAL` / `AVAILABLE` / `UNLISTED`。`0.1.1` 是尚未提交的更新候选版本。
 > [GitHub Issues](https://github.com/battle-doll/adaptive-codex-orchestrator/issues)
-> 被指定为普通支持候选渠道，但使用前必须确认可访问，且不承诺响应时间。
+> 提供尽力而为的一般支持，不承诺响应时间。
 
 本项目是独立社区工具，不是 OpenAI 的官方产品，也未获得 OpenAI 的隶属、
 赞助或认可。支持按 best effort 提供，不能替代专业 security、legal、privacy

@@ -18,9 +18,9 @@ import xml.etree.ElementTree as ET
 PLUGIN_NAME = "adaptive-codex-orchestrator"
 SKILL_NAME = "adaptive-orchestration"
 EXPECTED_STARTER_PROMPTS = (
-    "Use Ultra Orchestration to inspect three independent modules without editing, then summarize the evidence.",
-    "Use Ultra Orchestration for this task only: reproduce the parser bug, make the smallest fix, and run focused tests.",
-    "Show the current Ultra Orchestration scope and profile, and explain whether persistent hooks are available.",
+    "Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.",
+    "이번 작업만 울트라 오케스트레이션을 켜고 파서 버그를 재현한 뒤 최소 수정과 집중 테스트를 해줘.",
+    "Show orchestration status, scope, and profile, and say whether persistent hooks are available.",
 )
 MANIFEST_ALLOWED_FIELDS = {
     "id",
@@ -904,7 +904,7 @@ def validate_reviewer_cases(plugin_root: Path, validator: Validator) -> None:
         return
     validator.check(data.get("schema_version") == 1, "reviewer cases schema_version must be 1")
     validator.check(data.get("plugin") == PLUGIN_NAME, "reviewer cases plugin name is invalid")
-    validator.check(data.get("version") == "0.1.0", "reviewer cases version must be 0.1.0")
+    validator.check(data.get("version") == "0.1.1", "reviewer cases version must be 0.1.1")
     setup = data.get("shared_setup")
     validator.check(
         isinstance(setup, dict)

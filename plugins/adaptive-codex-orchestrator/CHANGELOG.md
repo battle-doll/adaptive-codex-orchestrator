@@ -3,9 +3,28 @@
 All notable changes to Adaptive Codex Orchestrator will be documented here.
 The project uses semantic versioning for public releases.
 
-## [Unreleased]
+## [0.1.1] - Unreleased
 
-No changes yet.
+### Changed
+
+- Made explicit enable, disable, status, scope, and profile intent the public
+  discovery boundary in manifest, skill, and agent metadata.
+- Clarified that ordinary parallelizable work, delegation opportunities,
+  answer-style controls, mentor mode, and general advice do not activate the
+  plugin.
+- Added aligned five-language README heroes and a 50-case Korean/English
+  discovery golden set with cross-plugin negatives.
+- Bumped package, reviewer, release-builder, validator, CI, and submission
+  metadata to the v0.1.1 update candidate without changing runtime behavior,
+  state, privacy, network access, permissions, or deterministic packaging.
+
+### Publication status
+
+- Verified on 2026-08-29: v0.1.0 is Published in OpenAI Platform and the
+  remote catalog records `GLOBAL` / `AVAILABLE` / `UNLISTED` at
+  <https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>.
+- v0.1.1 is an unsubmitted update candidate. No LISTED status or performance
+  improvement is claimed.
 
 ## [0.1.0] - 2026-08-19
 
@@ -62,6 +81,6 @@ No changes yet.
 
 ### Notes
 
-- GitHub source availability, OpenAI submission, approval, and the later
-  developer-controlled Publish action are separate states. Publication is
-  intentionally withheld pending hands-on use and a separate owner decision.
+- This section records the state of the source release on 2026-08-19. The
+  later verified publication state is recorded above without altering the
+  historical v0.1.0 release artifact.

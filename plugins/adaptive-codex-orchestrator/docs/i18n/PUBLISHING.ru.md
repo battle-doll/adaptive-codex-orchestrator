@@ -9,10 +9,12 @@ Checklist](../PUBLISHING.md). При расхождениях действует
 
 ## Текущий статус
 
-Adaptive Codex Orchestrator `0.1.0` — неопубликованный public-review candidate.
-Содержимое repository не означает отправку, одобрение, deployment или
-принятие marketplace. Публикация — явное действие repository owner после
-прохождения всех применимых gate.
+Проверено 2026-08-29: `0.1.0` имеет статус Published в OpenAI Platform;
+удалённый каталог указывает `GLOBAL` / `AVAILABLE` и discoverability
+`UNLISTED`: <https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>.
+Дата первой публикации не установлена. `0.1.1` — ещё не поданный кандидат на
+обновление; repository не означает подачу, одобрение, публикацию или статус
+LISTED для этого обновления.
 
 Проект является независимым community tool. Нельзя создавать впечатление, что
 он связан, спонсируется или одобряется OpenAI либо является официальным

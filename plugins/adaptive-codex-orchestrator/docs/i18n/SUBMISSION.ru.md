@@ -3,9 +3,14 @@
 [English](SUBMISSION.md) · [한국어](SUBMISSION.ko.md) · [日本語](SUBMISSION.ja.md) ·
 [简体中文](SUBMISSION.zh-CN.md) · **Русский**
 
-Дата проверки: **2026-08-19**
+Дата проверки: **2026-08-29**
 
-Статус: **подготовлено локально; ещё не подано, не одобрено и не опубликовано**.
+Статус: **v0.1.0 опубликована и имеет в удалённом каталоге `GLOBAL` /
+`AVAILABLE` / `UNLISTED`; v0.1.1 — ещё не поданный кандидат на обновление**.
+
+Точная страница v0.1.0:
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>.
+Дата первой публикации неизвестна; статус LISTED не заявляется.
 
 Это краткая запись для публичной проверки. Подробные действия владельца
 приведены в [Publishing](../PUBLISHING.md), а выполненные локальные проверки —
@@ -17,9 +22,9 @@
 [Точные значения portal listing](SUBMISSION.md#exact-portal-listing-candidate) в
 английской версии дословно отражают текущий manifest. Основные значения:
 
-- package `adaptive-codex-orchestrator`, version `0.1.0`
+- package `adaptive-codex-orchestrator`, version `0.1.1`
 - display name `Adaptive Codex Orchestrator`
-- subtitle `Adaptive task orchestration`
+- subtitle `Explicit bounded orchestration`
 - publisher `battle-doll`, category `Developer Tools`, license `MIT`
 - runtime mode `Ultra Orchestration`, requested worker `gpt-5.3-codex-spark`
 - color `#7168E8`, `./assets/composer-icon.png` (48×48), `./assets/logo.png` (256×256).

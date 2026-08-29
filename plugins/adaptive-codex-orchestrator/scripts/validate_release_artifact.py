@@ -27,7 +27,7 @@ import zipfile
 
 
 PACKAGE_NAME = "adaptive-codex-orchestrator"
-PACKAGE_VERSION = "0.1.0"
+PACKAGE_VERSION = "0.1.1"
 ARCHIVE_NAME = f"{PACKAGE_NAME}-{PACKAGE_VERSION}.zip"
 FIXED_ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
 
