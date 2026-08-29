@@ -18,9 +18,9 @@ import xml.etree.ElementTree as ET
 PLUGIN_NAME = "adaptive-codex-orchestrator"
 SKILL_NAME = "adaptive-orchestration"
 EXPECTED_STARTER_PROMPTS = (
-    "Use Ultra Orchestration to inspect three independent modules without editing, then summarize the evidence.",
-    "Use Ultra Orchestration for this task only: reproduce the parser bug, make the smallest fix, and run focused tests.",
-    "Show the current Ultra Orchestration scope and profile, and explain whether persistent hooks are available.",
+    "Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.",
+    "이번 작업만 울트라 오케스트레이션을 켜고 파서 버그를 재현한 뒤 최소 수정과 집중 테스트를 해줘.",
+    "Show orchestration status, scope, and profile, and say whether persistent hooks are available.",
 )
 MANIFEST_ALLOWED_FIELDS = {
     "id",
@@ -111,6 +111,7 @@ REQUIRED_PACKAGE_FILES = {
     "tests/test_state_store.py",
     "tests/test_project_identity.py",
     "tests/test_hooks.py",
+    "tests/test_discovery_evals.py",
     "tests/fixtures/hooks/session_start.json",
     "tests/fixtures/hooks/user_prompt_submit.json",
     "tests/fixtures/hooks/subagent_start.json",
@@ -118,6 +119,7 @@ REQUIRED_PACKAGE_FILES = {
     "tests/fixtures/hooks/session_end.json",
     "evals/prompts.jsonl",
     "evals/reviewer-cases.json",
+    "evals/discovery-cases.json",
     "evals/README.md",
     "scripts/evaluate_policies.py",
     "scripts/validate_package.py",
@@ -904,7 +906,7 @@ def validate_reviewer_cases(plugin_root: Path, validator: Validator) -> None:
         return
     validator.check(data.get("schema_version") == 1, "reviewer cases schema_version must be 1")
     validator.check(data.get("plugin") == PLUGIN_NAME, "reviewer cases plugin name is invalid")
-    validator.check(data.get("version") == "0.1.0", "reviewer cases version must be 0.1.0")
+    validator.check(data.get("version") == "0.1.1", "reviewer cases version must be 0.1.1")
     setup = data.get("shared_setup")
     validator.check(
         isinstance(setup, dict)
@@ -939,6 +941,94 @@ def validate_reviewer_cases(plugin_root: Path, validator: Validator) -> None:
                 _non_empty_string(case.get("why_plugin_should_not_complete")),
                 f"negative reviewer case {case_id} needs a safety rationale",
             )
+
+
+def validate_discovery_payload(data: Mapping[str, Any], validator: Validator) -> None:
+    """Validate the static bilingual plugin-selection golden set."""
+
+    expected_counts = {"direct": 10, "indirect": 20, "negative": 20}
+    expected_selections = {
+        "direct": "select",
+        "indirect": "select",
+        "negative": "do_not_select",
+    }
+    expected_fields = {
+        "id",
+        "language",
+        "initial_state",
+        "prompt",
+        "expected_selection",
+        "why",
+    }
+
+    validator.check(data.get("schema_version") == "1.0", "discovery cases schema_version must be 1.0")
+    validator.check(data.get("plugin") == PLUGIN_NAME, "discovery cases plugin name is invalid")
+    validator.check(data.get("version") == "0.1.1", "discovery cases version must be 0.1.1")
+    validator.check(data.get("synthetic_only") is True, "discovery cases must be marked synthetic_only")
+    validator.check(
+        set(data) == {"schema_version", "plugin", "version", "synthetic_only", *expected_counts},
+        "discovery cases top-level fields are invalid",
+    )
+
+    ids: set[str] = set()
+    total_cases = 0
+    for group, expected_count in expected_counts.items():
+        cases = data.get(group)
+        if not validator.check(isinstance(cases, list), f"discovery {group} cases must be an array"):
+            continue
+        total_cases += len(cases)
+        validator.check(
+            len(cases) == expected_count,
+            f"discovery {group} dataset must contain exactly {expected_count} cases",
+        )
+        locales = {
+            case.get("language")
+            for case in cases
+            if isinstance(case, dict) and case.get("language") in {"ko", "en"}
+        }
+        validator.check(locales == {"ko", "en"}, f"discovery {group} cases must include Korean and English")
+        expected_per_locale = expected_count // 2
+        for locale in ("ko", "en"):
+            locale_count = sum(
+                1
+                for case in cases
+                if isinstance(case, dict) and case.get("language") == locale
+            )
+            validator.check(
+                locale_count == expected_per_locale,
+                f"discovery {group} dataset must contain exactly {expected_per_locale} {locale} cases",
+            )
+
+        for index, case in enumerate(cases):
+            if not validator.check(isinstance(case, dict), f"discovery {group} case {index} must be an object"):
+                continue
+            case_id = case.get("id")
+            validator.check(set(case) == expected_fields, f"discovery case {case_id} fields are invalid")
+            validator.check(
+                isinstance(case_id, str) and SKILL_NAME_RE.fullmatch(case_id) is not None,
+                f"discovery {group} case {index} has an invalid id",
+            )
+            validator.check(case_id not in ids, f"duplicate discovery case id: {case_id}")
+            if isinstance(case_id, str):
+                ids.add(case_id)
+            validator.check(case.get("language") in {"ko", "en"}, f"discovery case {case_id} has an invalid language")
+            validator.check(case.get("initial_state") in {"OFF", "ON"}, f"discovery case {case_id} has an invalid initial_state")
+            validator.check(_non_empty_string(case.get("prompt")), f"discovery case {case_id} is missing prompt")
+            validator.check(
+                case.get("expected_selection") == expected_selections[group],
+                f"discovery {group} case {case_id} must use expected_selection={expected_selections[group]}",
+            )
+            validator.check(_non_empty_string(case.get("why")), f"discovery case {case_id} is missing why")
+
+    validator.check(total_cases == 50, "discovery dataset must contain exactly 50 cases")
+    validator.check(len(ids) == 50, "discovery dataset must contain exactly 50 unique ids")
+
+
+def validate_discovery_cases(plugin_root: Path, validator: Validator) -> None:
+    path = plugin_root / "evals" / "discovery-cases.json"
+    data = load_json(path, validator, "discovery cases")
+    if data is not None:
+        validate_discovery_payload(data, validator)
 
 
 def validate_png_files(plugin_root: Path, validator: Validator) -> None:
@@ -1139,6 +1229,7 @@ def main() -> int:
     validate_model_policy(plugin_root, validator)
     validate_json_files(plugin_root, validator)
     validate_reviewer_cases(plugin_root, validator)
+    validate_discovery_cases(plugin_root, validator)
     validate_svg_files(plugin_root, validator)
     validate_png_files(plugin_root, validator)
     validate_python_and_runtime_security(plugin_root, validator)

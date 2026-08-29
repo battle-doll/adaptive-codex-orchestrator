@@ -8,9 +8,11 @@
 
 ## 当前状态
 
-Adaptive Codex Orchestrator `0.1.0` 是尚未发布的 public-review candidate。
-仓库内容不代表已经提交、批准、部署或被 marketplace 接受。只有在
-所有适用 gate 通过后，repository owner 才能明确执行发布操作。
+2026-08-29 已验证：`0.1.0` 在 OpenAI Platform 中为 Published；远程
+目录记录为 `GLOBAL` / `AVAILABLE`，discoverability 为 `UNLISTED`：
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>。
+首次发布日期尚未确认。`0.1.1` 是尚未提交的更新候选版本；仓库内容不代表
+该更新已提交、批准、发布或具有 LISTED 状态。
 
 项目是独立社区工具，不得暗示与 OpenAI 存在隶属、赞助、认可关系或属于
 OpenAI 官方产品。

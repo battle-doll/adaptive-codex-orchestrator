@@ -2,17 +2,24 @@
 
 ## State model
 
-Adaptive Codex Orchestrator `0.1.0` is a public-review candidate. Keep these
-states distinct:
+Verified on 2026-08-29: Adaptive Codex Orchestrator `0.1.0` is **Published** in
+OpenAI Platform. The remote catalog records `GLOBAL` / `AVAILABLE` with
+discoverability `UNLISTED` at
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>.
+The date of first publication is not established. `UNLISTED` does not mean the
+plugin appears in directory search or browse surfaces.
+
+Version `0.1.1` is an **unsubmitted update candidate**. Keep these states
+distinct for that update:
 
 1. Source and policy pages are available on GitHub.
 2. A ZIP is uploaded and **Submit for Review** is selected.
 3. OpenAI approves the submitted version.
 4. The developer separately selects **Publish**.
 
-Approval does not publish the plugin. For this candidate, step 4 is deliberately
-withheld until the owner has used the approved build and decides to publish it.
-Repository presence alone must not be presented as submission or approval.
+Approval does not publish an update. The published state of v0.1.0 does not
+imply submission, approval, publication, or LISTED discoverability for v0.1.1.
+Repository presence alone must not be presented as any of those states.
 
 This is an independent community project and must not imply OpenAI affiliation,
 sponsorship, endorsement, or official status.
@@ -20,7 +27,7 @@ sponsorship, endorsement, or official status.
 ## Candidate metadata
 
 - [x] Package and manifest name: `adaptive-codex-orchestrator`
-- [x] Version: `0.1.0`
+- [x] Version: `0.1.1`
 - [x] Verified public developer identity used by existing listings:
       `battle-doll`
 - [x] Display name and subtitle satisfy the 30-character limits.
@@ -55,6 +62,9 @@ the public repository. Recheck every HTTPS URL immediately before submission.
       fixtures, expected behavior, expected result shape, and negative-case
       rationale, are in `evals/reviewer-cases.json`.
 - [x] The broader policy dataset contains 31 deterministic scenarios.
+- [x] The discovery golden set contains 10 direct positives, 20 indirect
+      positives, and 20 negatives, evenly split between Korean and English;
+      package validation checks count, locale, and selection-label integrity.
 - [x] Unit and fixture tests cover command ambiguity and non-mutation, state
       migration/concurrency/cleanup, project identity, five lifecycle events,
       compatibility notices, missing host data, invalid input, and output
@@ -64,16 +74,15 @@ the public repository. Recheck every HTTPS URL immediately before submission.
 - [x] The release builder creates a deterministic one-root ZIP and SHA-256
       sidecar; the artifact validator performs safe archive inspection before
       an optional trusted-source smoke import.
-- [ ] Re-run every validation after the packaged tree is frozen. Record test
+- [x] Re-run every validation after the packaged tree is frozen. Record test
       counts in [Validation](VALIDATION.md), and record the final archive size
       and SHA-256 in the repository submission record and generated sidecar so
       the archive does not attempt to contain its own digest.
 
 ## Public repository and clean install
 
-- [ ] Create the public repository at
-      `https://github.com/battle-doll/adaptive-codex-orchestrator` only after
-      owner confirmation.
+- [x] Public repository exists at
+      `https://github.com/battle-doll/adaptive-codex-orchestrator`.
 - [ ] Verify the root website, support, privacy, terms, security, and submission
       pages over HTTPS.
 - [ ] Confirm GitHub Issues and private security advisories are usable.
@@ -110,8 +119,8 @@ Immediately before the owner-authorized upload:
 7. Confirm the skill security scan has no unresolved finding.
 8. Select **Submit for Review** only with action-time owner confirmation.
 
-Do not select **Publish**, even after approval, until the owner separately asks
-for publication after hands-on use.
+Do not select **Publish** for v0.1.1, even after approval, until the owner
+separately asks for publication after hands-on use.
 
 ## Post-approval, pre-publication
 

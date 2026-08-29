@@ -3,9 +3,14 @@
 [English](SUBMISSION.md) · **한국어** · [日本語](SUBMISSION.ja.md) ·
 [简体中文](SUBMISSION.zh-CN.md) · [Русский](SUBMISSION.ru.md)
 
-검토일: **2026-08-19**
+검토일: **2026-08-29**
 
-상태: **로컬 준비 완료; 아직 제출·승인·게시되지 않음**.
+상태: **v0.1.0은 Published 및 원격 카탈로그 `GLOBAL` / `AVAILABLE` /
+`UNLISTED`; v0.1.1은 아직 제출하지 않은 업데이트 후보**.
+
+정확한 v0.1.0 페이지는
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>이며,
+최초 게시 날짜는 확인되지 않았습니다. LISTED 상태를 주장하지 않습니다.
 
 이 문서는 공개 검토용 요약입니다. 상세 소유자 절차는
 [게시 체크리스트](../PUBLISHING.md), 실행된 로컬 증거는
@@ -17,9 +22,9 @@
 영문 [정확한 포털 목록 값](SUBMISSION.md#exact-portal-listing-candidate)은 현재
 manifest를 그대로 반영합니다. 핵심 값은 다음과 같습니다.
 
-- 패키지 `adaptive-codex-orchestrator`, 버전 `0.1.0`
+- 패키지 `adaptive-codex-orchestrator`, 버전 `0.1.1`
 - 표시 이름 `Adaptive Codex Orchestrator`
-- 부제 `Adaptive task orchestration`
+- 부제 `Explicit bounded orchestration`
 - 게시자 `battle-doll`, 범주 `Developer Tools`, 라이선스 `MIT`
 - 실행 모드 `Ultra Orchestration`, 요청 작업자 `gpt-5.3-codex-spark`
 - 색상 `#7168E8`, `./assets/composer-icon.png`(48×48), `./assets/logo.png`(256×256).

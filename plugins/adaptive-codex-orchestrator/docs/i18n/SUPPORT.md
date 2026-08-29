@@ -3,10 +3,10 @@
 **English** · [한국어](SUPPORT.ko.md) · [日本語](SUPPORT.ja.md) ·
 [简体中文](SUPPORT.zh-CN.md) · [Русский](SUPPORT.ru.md)
 
-> Adaptive Codex Orchestrator `0.1.0` is an unpublished public-review
+> Verified 2026-08-29: `0.1.0` is Published and remote-catalog
+> `GLOBAL` / `AVAILABLE` / `UNLISTED`. Version `0.1.1` is an unsubmitted update
 > candidate. [GitHub Issues](https://github.com/battle-doll/adaptive-codex-orchestrator/issues)
-> is the designated general-support candidate, but its accessibility must be
-> verified before use and no response-time commitment exists.
+> provides best-effort general support with no response-time commitment.
 
 Adaptive Codex Orchestrator is an independent, community-created developer
 tool. It is not affiliated with, sponsored by, endorsed by, or an official

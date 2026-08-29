@@ -11,10 +11,29 @@ result shape, and a safety rationale for every negative case. It is formatted
 for manual entry in the OpenAI plugin submission portal and does not replace
 the broader 31-scenario offline policy set.
 
+`discovery-cases.json` is the bilingual plugin-selection golden set: exactly
+10 direct positives, 20 indirect positives, and 20 negatives, with Korean and
+English represented equally in every group. Direct cases name the skill or a
+recognized mode. Indirect cases omit the product name but still express an
+explicit orchestration control. Negative cases cover ordinary parallelizable
+work, generic delegation, answer-style or mentor-mode controls, advice and
+learning requests, and quoted or code-fenced control text. The package
+validator checks the counts, locale balance, selection labels, fields, and
+unique IDs. These synthetic fixtures test static discovery metadata and
+selection boundaries; they do not claim that all 50 prompts were executed in
+a live host or scored by human reviewers.
+
 Run the checker from the plugin root:
 
 ```text
 python scripts/evaluate_policies.py
+```
+
+Run the complete package validator, including discovery-set validation, from
+the repository root:
+
+```text
+python plugins/adaptive-codex-orchestrator/scripts/validate_package.py --repo-root .
 ```
 
 An alternate JSONL file can be checked explicitly:

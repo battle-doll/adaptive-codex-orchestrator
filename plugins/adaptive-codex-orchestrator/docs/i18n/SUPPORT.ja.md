@@ -3,10 +3,10 @@
 [English](SUPPORT.md) · [한국어](SUPPORT.ko.md) · **日本語** ·
 [简体中文](SUPPORT.zh-CN.md) · [Русский](SUPPORT.ru.md)
 
-> Adaptive Codex Orchestrator `0.1.0` は未公開の public-review candidate
-> です。public support は [GitHub Issues](https://github.com/battle-doll/adaptive-codex-orchestrator/issues)
-> を一般 support の候補先として指定していますが、使用前に到達確認が必要で、response-time commitment
-> はありません。
+> 2026-08-29 確認: `0.1.0` は Published、リモートカタログでは
+> `GLOBAL` / `AVAILABLE` / `UNLISTED` です。`0.1.1` は未提出の更新候補です。
+> [GitHub Issues](https://github.com/battle-doll/adaptive-codex-orchestrator/issues)で
+> best-effort の一般 support を提供しますが、応答時間は保証しません。
 
 本プロジェクトは独立した community tool であり、OpenAI の提携・後援・
 推奨を受ける公式製品ではありません。support は best effort で、専門的な

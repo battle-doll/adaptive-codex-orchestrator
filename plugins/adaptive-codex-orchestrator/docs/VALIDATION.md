@@ -2,7 +2,7 @@
 
 ## Local pre-submission snapshot
 
-Date: **2026-08-19** (Asia/Seoul)
+Date: **2026-08-29** (Asia/Seoul)
 
 Environment:
 
@@ -24,7 +24,7 @@ python -B -m unittest discover \
   -p "test_*.py" -v
 ```
 
-Result: **PASS** — 108 tests ran with 0 failures, 0 errors, and 1 intentional
+Result: **PASS** — 112 tests ran with 0 failures, 0 errors, and 1 intentional
 skip. The skipped check is POSIX `0600` permission-bit enforcement on Windows.
 
 Coverage includes the Korean/English command matrix, quoted/fenced/incidental
@@ -35,6 +35,21 @@ events, one-shot cleanup, compatibility notices, missing host data, invalid and
 oversized input, output schema, compact-policy revision de-duplication, lazy
 detailed-policy loading, lock contention recovery, bounded revision metadata,
 and prompt/source non-persistence.
+
+Four focused discovery-validator tests also prove that the checked-in golden
+set passes and that count, locale-balance, and selection-label regressions are
+rejected.
+
+### Discovery selection fixtures
+
+`evals/discovery-cases.json` contains exactly 10 direct positives, 20 indirect
+positives, and 20 negatives. Each group is evenly split between Korean and
+English. Package validation checks counts, locale balance, required fields,
+unique IDs, and `select` versus `do_not_select` labels.
+
+Result: **PASS** — all 50 static selection fixtures passed structural
+validation. This is a synthetic golden-set check, not a claim that the prompts
+were executed in a live host or scored by human reviewers.
 
 ### Policy scenarios
 
@@ -55,13 +70,14 @@ python -B plugins/adaptive-codex-orchestrator/scripts/validate_package.py \
   --repo-root .
 ```
 
-Result: **PASS** — 1,969 assertions. The validator covers manifest listing
+Result: **PASS** — 2,447 assertions. The validator covers manifest listing
 limits and exact starter prompts, publisher and public URLs, marketplace
 source, default hook discovery, skill metadata, model policy, Python AST
 security boundaries, state persistence fields, JSON, SVG, exact 256×256 and
 48×48 PNG dimensions, five positive plus three negative reviewer cases,
-required package and root documents, the exact 34-file five-language suite,
-relative links, license parity, and machine-local path leakage.
+the 10/20/20 bilingual discovery set, required package and root documents, the
+exact 34-file five-language suite, relative links, license parity, and
+machine-local path leakage.
 
 ### Installed plugin and skill validators
 
@@ -77,7 +93,7 @@ Developer-specific validator paths are intentionally not committed.
 
 ### Syntax and structured files
 
-All 16 Python files under `hooks`, `scripts`, and `tests` compiled in memory.
+All 17 Python files under `hooks`, `scripts`, and `tests` compiled in memory.
 The package validator parsed every JSON document with duplicate-key rejection.
 The marketplace JSON and 3 OS × 2 Python GitHub Actions matrix were also
 reviewed. The configured CI targets Windows, macOS, and Linux on Python 3.9 and
@@ -97,7 +113,7 @@ claim is present.
 ```text
 python -B plugins/adaptive-codex-orchestrator/scripts/build_release.py
 python -B plugins/adaptive-codex-orchestrator/scripts/validate_release_artifact.py \
-  plugins/adaptive-codex-orchestrator/dist/adaptive-codex-orchestrator-0.1.0.zip \
+  plugins/adaptive-codex-orchestrator/dist/adaptive-codex-orchestrator-0.1.1.zip \
   --trusted-source-root plugins/adaptive-codex-orchestrator \
   --require-sidecar
 ```

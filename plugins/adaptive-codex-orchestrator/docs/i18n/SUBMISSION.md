@@ -3,9 +3,14 @@
 **English** · [한국어](SUBMISSION.ko.md) · [日本語](SUBMISSION.ja.md) ·
 [简体中文](SUBMISSION.zh-CN.md) · [Русский](SUBMISSION.ru.md)
 
-Review date: **2026-08-19**
+Review date: **2026-08-29**
 
-Status: **prepared locally; not yet submitted/approved/published**.
+Status: **v0.1.0 Published and remote-catalog `GLOBAL` / `AVAILABLE` /
+`UNLISTED`; v0.1.1 is an unsubmitted update candidate**.
+
+Exact v0.1.0 plugin page:
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>.
+The first publication date is unknown. No LISTED status is claimed.
 
 This is a concise public-review record. The detailed owner gates remain in
 [Publishing](../PUBLISHING.md), and the latest locally executed evidence is in
@@ -20,11 +25,11 @@ the then-current official portal schema immediately before submission.
 | Field | Manifest-recorded candidate value |
 | --- | --- |
 | Package | `adaptive-codex-orchestrator` |
-| Version | `0.1.0` |
+| Version | `0.1.1` |
 | Type | `Skills-only Codex plugin with trusted local lifecycle hooks` |
 | Display name | `Adaptive Codex Orchestrator` |
-| Subtitle / short description | `Adaptive task orchestration` |
-| Package description | `Local, deterministic orchestration policies for adaptive Codex development workflows.` |
+| Subtitle / short description | `Explicit bounded orchestration` |
+| Package description | `Control when Codex delegates bounded tasks, with explicit scope, profiles, and safe parallel execution.` |
 | Developer / publisher | `battle-doll` |
 | Category | `Developer Tools` |
 | License | `MIT` (`MIT License`) |
@@ -49,14 +54,14 @@ portal rule at submission time.
 
 Exact long description:
 
-> Apply deterministic, local orchestration policy to Codex development tasks
-> while the selected parent model keeps requirements, architecture, review,
-> integration, validation, and the final answer. Use Korean or English controls
-> for one-shot, session, project, or global scope, choose conservative,
-> balanced, or fast profiles, and delegate only bounded, independently
-> verifiable work. The plugin never changes the parent model or reasoning level,
-> requests gpt-5.3-codex-spark only when useful, stores no prompts or source
-> code, and sends no telemetry.
+> Use Adaptive Codex Orchestrator when the user explicitly enables, disables,
+> scopes, profiles, or queries orchestration in Korean or English. The parent
+> keeps requirements, architecture, integration, validation, and the final
+> answer while bounded, independently verifiable work may be delegated. It
+> does not activate merely because parallel work could help, does not change
+> the selected parent model or reasoning level, permissions, sandbox settings,
+> or network access, and does not store prompts or source code. Worker model
+> requests follow the bundled policy.
 
 Exact capabilities:
 
@@ -72,21 +77,18 @@ Exact capabilities:
 Exact starter prompts:
 
 ```text
-Use Ultra Orchestration to inspect three independent modules without editing, then summarize the evidence.
-Use Ultra Orchestration for this task only: reproduce the parser bug, make the smallest fix, and run focused tests.
-Show the current Ultra Orchestration scope and profile, and explain whether persistent hooks are available.
+Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.
+이번 작업만 울트라 오케스트레이션을 켜고 파서 버그를 재현한 뒤 최소 수정과 집중 테스트를 해줘.
+Show orchestration status, scope, and profile, and say whether persistent hooks are available.
 ```
 
 Proposed release note (copy exactly if still accurate at submission):
 
-> Initial skills-only release of Adaptive Codex Orchestrator. It packages one
-> adaptive orchestration skill and trusted local lifecycle hooks for one-shot,
-> session, project, and plugin-global profiles. The control plane is offline,
-> uses plugin-owned local state, and requires no MCP server, OAuth, credentials,
-> telemetry, or external network access. When hooks are unavailable or untrusted,
-> explicit skill use applies only to the current request. Reviewers should use a
-> writable `PLUGIN_DATA` directory and trust the bundled hooks for persistent-mode
-> tests.
+> Discovery-focused patch update. It clarifies that explicit Korean or English
+> orchestration controls—not merely parallelizable work—select the plugin and
+> adds a 50-case Korean/English discovery golden set. It does not change the
+> runtime parser, hook behavior, state schema, delegation policy, permissions,
+> privacy, network behavior, or deterministic packaging contract.
 
 ## Designated candidate destinations
 
@@ -126,6 +128,11 @@ exactly **five positive and three negative cases**, including reproducible
 setup, expected behavior, result shape, and a safety rationale for every
 negative case. They complement, rather than replace, the 31-scenario offline
 policy dataset.
+
+The static `evals/discovery-cases.json` golden set adds exactly **10 direct,
+20 indirect, and 20 negative** Korean/English selection cases. Its validator
+checks count, locale balance, and expected-selection labels; it is not a claim
+of live-host execution or human semantic scoring.
 
 Before submission, the owner must:
 

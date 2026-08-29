@@ -3,17 +3,39 @@
 [English](../../README.md) · [한국어](README.ko.md) ·
 [日本語](README.ja.md) · **简体中文** · [Русский](README.ru.md)
 
+明确控制 Codex 何时委派有界工作：选择任务、会话、项目或全局范围和配置文件，
+并保留父模型审查与安全并行执行。它面向希望按需控制委派的开发者，而不是把每个
+任务自动变成多代理工作流。
+
+> 发布状态（2026-08-29 已验证）：[v0.1.0 已 Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)，
+> 远程目录记录为 `GLOBAL` / `AVAILABLE` / `UNLISTED`。首次发布日期未知。
+> v0.1.1 是尚未提交的更新候选版本。
+
+## 安装或使用
+
+- 打开准确的[已发布 v0.1.0 插件页面](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)。
+  `UNLISTED` 不代表会出现在目录搜索或浏览界面中。
+- 审查 `hooks/hooks.json` 和 `hooks/runtime.py` 后，再遵循下方源码安装步骤。
+- 此 package source 是 v0.1.1 候选版本，并非当前已发布的软件包。
+
+## 立即试用
+
+```text
+Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.
+Show orchestration status, scope, and profile.
+```
+
+## 关键边界
+
+- 仅处理明确的启用、停用、状态、范围、配置文件或 `$adaptive-orchestration`
+  控制；无需知道产品名称。
+- 普通可并行任务、回答风格、导师模式、学习、建议、头脑风暴和批评不会启用插件。
+- 需求、架构、集成、验证和最终答复由父模型负责，同时最多一个 writer。
+- 不更改已选择的父模型、推理级别、权限、批准、sandbox 或网络，也不保存
+  prompt、会话、源码或原始路径。worker 模型请求遵循 bundled policy。
+
 > Adaptive Codex Orchestrator 是独立的社区项目。它与 OpenAI 无隶属、赞助
 > 或认可关系，也不是 OpenAI 的官方产品。
-
-Adaptive Codex Orchestrator 是面向 Codex 的本地、离线编排工具。确定性的
-Python 控制平面负责可选运行模式 **Ultra Orchestration** 的韩语/英语命令、
-状态、项目标识和 hook 上下文。用户选择的父模型仍负责理解需求、架构、是否
-委派、审查结果、集成、最终验证和最终答复。
-
-当前 `0.1.0` 是公开审核候选版本。GitHub 源码公开、提交 OpenAI 审核、
-获得批准以及开发者执行 Publish 是彼此独立的状态；仓库公开并不表示后续
-状态已经完成。
 
 ## 能做什么，以及明确不做什么
 
@@ -144,8 +166,8 @@ repository root、home、`.codex` root 或共享父目录，然后只删除该�
 
 ## 验证和发布状态
 
-[2026-08-19 本地验证记录](../VALIDATION.md)记载：Windows / Python 3.12.10
-下运行 108 个 tests（0 failure，1 个有意 skip）、31 个 policy evals 和 1,969
+[2026-08-29 本地验证记录](../VALIDATION.md)记载：Windows / Python 3.12.10
+下运行 112 个 tests（0 failure，1 个有意 skip）、31 个 policy evals 和 2,447
 个 package assertions，全部 PASS。GitHub Actions 配置了 Windows、macOS、
 Linux 以及 Python 3.9、3.12，但本地记录没有执行远程 CI。
 

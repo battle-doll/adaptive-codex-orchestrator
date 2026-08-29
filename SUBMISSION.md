@@ -1,17 +1,26 @@
-# Plugin Submission and Reviewer Notes
+# Plugin v0.1.1 Publication and Reviewer Record
 
 **English** · [한국어](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ko.md) ·
 [日本語](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ja.md) ·
 [简体中文](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.zh-CN.md) ·
 [Русский](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ru.md)
 
-Prepared: **2026-08-19**
+Prepared: **2026-08-29**
 
-This document records the review candidate; it does not claim submission,
-approval, publication, affiliation, or endorsement. OpenAI approval and the
-developer's later **Publish** action are separate states.
+Verified on 2026-08-29: v0.1.1 is **Published** in OpenAI Platform at
+<https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>.
+Exact-name search returns one result in the public section, and the current-
+version detail page opens successfully. The first publication date and the
+remote-catalog discoverability field were not independently established.
+OpenAI's publication workflow is documented at
+<https://developers.openai.com/plugins/deploy/submission>.
 
-## Candidate artifact
+Files inside `plugins/adaptive-codex-orchestrator/` retain their pre-publication
+status wording because they are part of the deterministic release tree. This
+root record supersedes that wording only for current distribution status; the
+packaged bytes remain frozen at the validated v0.1.1 SHA-256 below.
+
+## Immutable published v0.1.0 artifact record
 
 - File: `adaptive-codex-orchestrator-0.1.0.zip`
 - Files: `88`
@@ -21,14 +30,31 @@ developer's later **Publish** action are separate states.
 
 Two independent builds were byte-identical. The SHA-256 sidecar, safe archive
 inspection, trusted-source byte comparison, and isolated smoke import passed.
+This artifact and checksum are historical and must not be rebuilt, replaced,
+or confused with the v0.1.1 checksum.
 
-## Listing
+## Published v0.1.1 artifact record
+
+- File: `adaptive-codex-orchestrator-0.1.1.zip`
+- Files: `90`
+- Compressed size: `271,636` bytes
+- Uncompressed size: `649,837` bytes
+- SHA-256: `06b1fe2b4b0b3c39ae14e2027447db37659fd205580e5f9e426dc2d03531c38a`
+
+The builder produced two byte-identical builds. The generated
+sidecar, safe archive inspection, trusted-source byte comparison, and isolated
+smoke import passed. The accountable publisher confirmed completion of review
+and the separate Publish action. A trustworthy portal download or digest was
+not available for an independent byte comparison with the uploaded artifact,
+and no live-host selector-success rate is inferred from publication.
+
+## v0.1.1 listing metadata
 
 - Package: `adaptive-codex-orchestrator`
-- Version: `0.1.0`
+- Version: `0.1.1`
 - Type: skills-only Codex plugin with trusted local lifecycle hooks
 - Display name: `Adaptive Codex Orchestrator`
-- Subtitle: `Adaptive task orchestration`
+- Subtitle: `Explicit bounded orchestration`
 - Category: `Developer Tools`
 - Developer and publisher: `battle-doll`
 - Website: <https://github.com/battle-doll/adaptive-codex-orchestrator>
@@ -52,9 +78,9 @@ sources remain in the package.
 
 ## Starter prompts
 
-1. `Use Ultra Orchestration to inspect three independent modules without editing, then summarize the evidence.`
-2. `Use Ultra Orchestration for this task only: reproduce the parser bug, make the smallest fix, and run focused tests.`
-3. `Show the current Ultra Orchestration scope and profile, and explain whether persistent hooks are available.`
+1. `Use orchestration for this task only: inspect three independent modules without editing, then summarize the evidence.`
+2. `이번 작업만 울트라 오케스트레이션을 켜고 파서 버그를 재현한 뒤 최소 수정과 집중 테스트를 해줘.`
+3. `Show orchestration status, scope, and profile, and say whether persistent hooks are available.`
 
 These prompts remain useful without claiming that every ChatGPT surface offers
 Codex lifecycle hooks. Persistent scopes are tested only where supported and
@@ -72,17 +98,20 @@ Exactly five positive and three negative cases, including fixtures and expected
 result shapes, are in
 [`evals/reviewer-cases.json`](plugins/adaptive-codex-orchestrator/evals/reviewer-cases.json).
 The broader deterministic suite contains 31 policy scenarios.
+The static `evals/discovery-cases.json` set contains 10 direct, 20 indirect,
+and 20 negative Korean/English selection cases. Its validator checks counts,
+locale balance, and selection labels; no live-host or human semantic run is
+claimed.
 
-## Initial release notes
+## Release notes
 
-Initial skills-only release of Adaptive Codex Orchestrator. It packages one
-adaptive orchestration skill and trusted local lifecycle hooks for one-shot,
-session, project, and plugin-global profiles. The control plane is offline,
-uses plugin-owned local state, and requires no MCP server, OAuth, credentials,
-telemetry, or external network access. When hooks are unavailable or untrusted,
-explicit skill use applies only to the current request. Reviewers should use a
-writable `PLUGIN_DATA` directory and trust the bundled hooks for persistent-mode
-tests.
+Discovery-focused patch update. It clarifies that explicit Korean or English
+orchestration controls—not merely parallelizable work—select the plugin, makes
+scope/profile/status examples visible, and adds a 50-case Korean/English
+discovery golden set. It does not change the runtime parser, hook behavior,
+state schema, delegation policy, permissions, privacy, network behavior, or
+deterministic packaging contract. When hooks are unavailable or untrusted,
+explicit skill use still applies only to the current request.
 
 ## Reproducibility
 
@@ -91,3 +120,13 @@ The release builder creates a sorted, timestamp-fixed ZIP with one
 validator rejects path traversal, portable-name collisions, symlinks, secret-
 like filenames, private home paths, unexpected file modes, oversized members,
 and source/archive byte mismatches before its trusted isolated smoke test.
+
+## Completion evidence and limits
+
+The accountable publisher confirmed v0.1.1 submission, approval, and the
+separate Publish action. Exact-name directory search and the current-version
+detail page were independently rechecked. The exact portal field selections,
+attestation text, first publication date, remote-catalog discoverability field,
+portal-upload byte identity, post-publication clean installation, and actual
+selector success across the 50 discovery prompts were not independently
+retained or measured and must not be reconstructed from this record.
