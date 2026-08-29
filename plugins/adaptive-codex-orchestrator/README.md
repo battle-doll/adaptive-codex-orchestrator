@@ -33,8 +33,9 @@ Use orchestration for this task only: inspect three independent modules without 
   brainstorming, or critique requests do not activate this plugin.
 - The parent retains requirements, architecture, integration, validation, and
   the final answer, with at most one concurrent writer.
-- No model, reasoning, permission, approval, sandbox, or network change; no
-  prompt, transcript, source-code, or raw-path persistence.
+- No change to the selected parent model or reasoning level, permissions,
+  approvals, sandbox, or network; no prompt, transcript, source-code, or
+  raw-path persistence. Worker model requests follow the bundled policy.
 
 > Independent community project. Adaptive Codex Orchestrator is not affiliated
 > with, endorsed by, or an official product of OpenAI.

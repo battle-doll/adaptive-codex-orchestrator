@@ -34,8 +34,9 @@ Show orchestration status, scope, and profile.
 - 通常の並列化可能な作業、回答スタイル、メンターモード、学習、助言、
   ブレインストーミング、批評は起動しません。
 - 要件、設計、統合、検証、最終回答は親が所有し、同時 writer は最大 1 です。
-- model、reasoning、権限、承認、sandbox、network を変更せず、prompt、会話、
-  source、raw path を保存しません。
+- 選択済みの親 model、reasoning level、権限、承認、sandbox、network を変更
+  せず、prompt、会話、source、raw path を保存しません。worker model の
+  request は bundled policy に従います。
 
 > Adaptive Codex Orchestrator は独立したコミュニティプロジェクトです。
 > OpenAI と提携しておらず、OpenAI が後援・推奨する公式製品でもありません。
@@ -183,8 +184,8 @@ plugin source、repository root、home、`.codex` root、共有 parent ではな
 
 ## 検証と公開状態
 
-[2026-08-19 のローカル検証記録](../VALIDATION.md)では、Windows / Python
-3.12.10 で 108 tests（failure 0、意図的 skip 1）、31 policy evals、1,969
+[2026-08-29 のローカル検証記録](../VALIDATION.md)では、Windows / Python
+3.12.10 で 112 tests（failure 0、意図的 skip 1）、31 policy evals、2,447
 package assertions が PASS しています。GitHub Actions は Windows・macOS・
 Linux と Python 3.9・3.12 用に設定されていますが、このローカル記録では
 remote CI は実行していません。

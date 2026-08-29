@@ -38,8 +38,9 @@ Show orchestration status, scope, and profile.
   штурм и критика также находятся вне его области.
 - Требования, архитектура, интеграция, проверка и итоговый ответ остаются у
   родительской модели; одновременно допускается не более одного writer.
-- Плагин не меняет model, reasoning, разрешения, approvals, sandbox или сеть и
-  не сохраняет prompts или source code.
+- Плагин не меняет выбранную родительскую model, reasoning level, разрешения,
+  approvals, sandbox или сеть и не сохраняет prompts или source code. Запросы
+  worker model следуют bundled policy.
 
 > Adaptive Codex Orchestrator — независимый общественный проект. Он не связан
 > с OpenAI, не спонсируется и не одобряется OpenAI и не является официальным
@@ -174,9 +175,9 @@ session key и lifecycle flags. Prompt разбирается в памяти т
 
 ## Проверка и статус публикации
 
-[Локальная запись от 2026-08-19](plugins/adaptive-codex-orchestrator/docs/VALIDATION.md) фиксирует PASS на Windows /
-Python 3.12.10: 108 tests (0 failures, 1 намеренный skip), 31 policy evals и
-1 969 package assertions. GitHub Actions настроен для Windows, macOS, Linux и
+[Локальная запись от 2026-08-29](plugins/adaptive-codex-orchestrator/docs/VALIDATION.md) фиксирует PASS на Windows /
+Python 3.12.10: 112 tests (0 failures, 1 намеренный skip), 31 policy evals и
+2 447 package assertions. GitHub Actions настроен для Windows, macOS, Linux и
 Python 3.9/3.12, но remote CI не запускался в рамках этой локальной записи.
 
 Publisher `battle-doll`, указанные в manifest публичные URL-кандидаты и два PNG

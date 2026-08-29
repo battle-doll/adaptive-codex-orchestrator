@@ -36,8 +36,9 @@ Codex가 제한된 작업을 언제 위임할지 직접 제어하세요. 작업�
   제어가 없으면 대상이 아닙니다.
 - 요구사항·설계·통합·검증·최종 답변은 부모가 책임지며 동시 작성자는 최대
   한 명입니다.
-- 모델·추론·권한·승인·샌드박스·네트워크를 바꾸지 않고 프롬프트나 소스 코드를
-  저장하지 않습니다.
+- 선택된 부모 모델·추론 수준·권한·승인·샌드박스·네트워크를 바꾸지 않고
+  프롬프트나 소스 코드를 저장하지 않습니다. 작업자 모델 요청은 번들 정책을
+  따릅니다.
 
 > 독립 커뮤니티 프로젝트입니다. Adaptive Codex Orchestrator는 OpenAI와
 > 제휴하거나 OpenAI가 후원·보증하는 공식 제품이 아닙니다.
@@ -175,8 +176,8 @@ one-shot > session > project > global > disabled
 
 ## 검증 및 게시 상태
 
-[2026-08-19 로컬 검증 기록](plugins/adaptive-codex-orchestrator/docs/VALIDATION.md)은 Windows/Python 3.12.10에서
-108개 테스트(실패 0, 의도적 skip 1), 31개 정책 평가, 1,969개 패키지
+[2026-08-29 로컬 검증 기록](plugins/adaptive-codex-orchestrator/docs/VALIDATION.md)은 Windows/Python 3.12.10에서
+112개 테스트(실패 0, 의도적 skip 1), 31개 정책 평가, 2,447개 패키지
 assertion 통과를 기록합니다. GitHub Actions는 Windows·macOS·Linux와 Python
 3.9·3.12로 설정됐지만, 이 로컬 기록에서는 원격 CI를 실행하지 않았습니다.
 

@@ -19,7 +19,7 @@
   "interface": {
     "displayName": "Adaptive Codex Orchestrator",
     "shortDescription": "Explicit bounded orchestration",
-    "longDescription": "Use Adaptive Codex Orchestrator when the user explicitly enables, disables, scopes, profiles, or queries orchestration in Korean or English. The parent keeps requirements, architecture, integration, validation, and the final answer while bounded, independently verifiable work may be delegated. It does not activate merely because parallel work could help, and it does not change models, reasoning, permissions, sandbox settings, or network access, or store prompts or source code.",
+    "longDescription": "Use Adaptive Codex Orchestrator when the user explicitly enables, disables, scopes, profiles, or queries orchestration in Korean or English. The parent keeps requirements, architecture, integration, validation, and the final answer while bounded, independently verifiable work may be delegated. It does not activate merely because parallel work could help, does not change the selected parent model or reasoning level, permissions, sandbox settings, or network access, and does not store prompts or source code. Worker model requests follow the bundled policy.",
     "developerName": "battle-doll",
     "category": "Developer Tools",
     "capabilities": [

@@ -62,6 +62,9 @@ the public repository. Recheck every HTTPS URL immediately before submission.
       fixtures, expected behavior, expected result shape, and negative-case
       rationale, are in `evals/reviewer-cases.json`.
 - [x] The broader policy dataset contains 31 deterministic scenarios.
+- [x] The discovery golden set contains 10 direct positives, 20 indirect
+      positives, and 20 negatives, evenly split between Korean and English;
+      package validation checks count, locale, and selection-label integrity.
 - [x] Unit and fixture tests cover command ambiguity and non-mutation, state
       migration/concurrency/cleanup, project identity, five lifecycle events,
       compatibility notices, missing host data, invalid input, and output
@@ -71,7 +74,7 @@ the public repository. Recheck every HTTPS URL immediately before submission.
 - [x] The release builder creates a deterministic one-root ZIP and SHA-256
       sidecar; the artifact validator performs safe archive inspection before
       an optional trusted-source smoke import.
-- [ ] Re-run every validation after the packaged tree is frozen. Record test
+- [x] Re-run every validation after the packaged tree is frozen. Record test
       counts in [Validation](VALIDATION.md), and record the final archive size
       and SHA-256 in the repository submission record and generated sidecar so
       the archive does not attempt to contain its own digest.

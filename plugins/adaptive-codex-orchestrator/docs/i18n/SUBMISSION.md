@@ -58,9 +58,10 @@ Exact long description:
 > scopes, profiles, or queries orchestration in Korean or English. The parent
 > keeps requirements, architecture, integration, validation, and the final
 > answer while bounded, independently verifiable work may be delegated. It
-> does not activate merely because parallel work could help, and it does not
-> change models, reasoning, permissions, sandbox settings, or network access,
-> or store prompts or source code.
+> does not activate merely because parallel work could help, does not change
+> the selected parent model or reasoning level, permissions, sandbox settings,
+> or network access, and does not store prompts or source code. Worker model
+> requests follow the bundled policy.
 
 Exact capabilities:
 
@@ -127,6 +128,11 @@ exactly **five positive and three negative cases**, including reproducible
 setup, expected behavior, result shape, and a safety rationale for every
 negative case. They complement, rather than replace, the 31-scenario offline
 policy dataset.
+
+The static `evals/discovery-cases.json` golden set adds exactly **10 direct,
+20 indirect, and 20 negative** Korean/English selection cases. Its validator
+checks count, locale balance, and expected-selection labels; it is not a claim
+of live-host execution or human semantic scoring.
 
 Before submission, the owner must:
 

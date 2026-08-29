@@ -31,6 +31,20 @@ inspection, trusted-source byte comparison, and isolated smoke import passed.
 This artifact and checksum are historical and must not be rebuilt, replaced,
 or reused as the v0.1.1 candidate checksum.
 
+## Unsubmitted v0.1.1 candidate artifact record
+
+- File: `adaptive-codex-orchestrator-0.1.1.zip`
+- Files: `90`
+- Compressed size: `271,636` bytes
+- Uncompressed size: `649,837` bytes
+- SHA-256: `06b1fe2b4b0b3c39ae14e2027447db37659fd205580e5f9e426dc2d03531c38a`
+
+The builder produced two byte-identical candidate builds. The generated
+sidecar, safe archive inspection, trusted-source byte comparison, and isolated
+smoke import passed. This record identifies a local **unsubmitted update
+candidate** only; it does not claim upload, review, approval, publication,
+LISTED discoverability, or live-host semantic evaluation.
+
 ## v0.1.1 listing metadata
 
 - Package: `adaptive-codex-orchestrator`
@@ -81,6 +95,10 @@ Exactly five positive and three negative cases, including fixtures and expected
 result shapes, are in
 [`evals/reviewer-cases.json`](plugins/adaptive-codex-orchestrator/evals/reviewer-cases.json).
 The broader deterministic suite contains 31 policy scenarios.
+The static `evals/discovery-cases.json` set contains 10 direct, 20 indirect,
+and 20 negative Korean/English selection cases. Its validator checks counts,
+locale balance, and selection labels; no live-host or human semantic run is
+claimed.
 
 ## Update notes draft
 

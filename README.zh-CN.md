@@ -32,7 +32,8 @@ Show orchestration status, scope, and profile.
 - 普通任务可以并行或委派并不会自动启用插件。回答风格、导师模式、学习、建议、
   头脑风暴和批评请求也不属于本插件。
 - 需求、架构、集成、验证和最终答复由父模型负责，同时最多一个 writer。
-- 不更改模型、推理、权限、批准、sandbox 或网络，也不保存 prompt 或源码。
+- 不更改已选择的父模型、推理级别、权限、批准、sandbox 或网络，也不保存
+  prompt 或源码。worker 模型请求遵循 bundled policy。
 
 > Adaptive Codex Orchestrator 是独立的社区项目。它与 OpenAI 无隶属、赞助
 > 或认可关系，也不是 OpenAI 的官方产品。
@@ -151,8 +152,8 @@ repository root、home、`.codex` root 或共享父目录，然后只删除该�
 
 ## 验证和发布状态
 
-[2026-08-19 本地验证记录](plugins/adaptive-codex-orchestrator/docs/VALIDATION.md)记载：Windows / Python 3.12.10
-下运行 108 个 tests（0 failure，1 个有意 skip）、31 个 policy evals 和 1,969
+[2026-08-29 本地验证记录](plugins/adaptive-codex-orchestrator/docs/VALIDATION.md)记载：Windows / Python 3.12.10
+下运行 112 个 tests（0 failure，1 个有意 skip）、31 个 policy evals 和 2,447
 个 package assertions，全部 PASS。GitHub Actions 配置了 Windows、macOS、
 Linux 以及 Python 3.9、3.12，但本地记录没有执行远程 CI。
 
