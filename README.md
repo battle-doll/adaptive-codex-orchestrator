@@ -8,19 +8,22 @@ or global scope, select a profile, and keep parent review and safe parallel
 execution explicit. Adaptive Codex Orchestrator is for developers who want
 delegation controls on demand—not automatic multi-agent routing for every task.
 
-> Publication status, verified 2026-08-29: [v0.1.0 is Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)
-> in OpenAI Platform and remote-catalog `GLOBAL` / `AVAILABLE` / `UNLISTED`.
-> The first publication date is unknown. v0.1.1 is an unsubmitted update
-> candidate; no LISTED status is claimed.
+> Publication status, verified 2026-08-29: [v0.1.1 is Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)
+> in OpenAI Platform. Exact-name search returns one result in the public section,
+> and the current-version detail page opens successfully. The first publication
+> date and remote-catalog discoverability field were not independently established.
 
 ## Install or use
 
-- Open the exact [published v0.1.0 plugin page](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821).
-  Because it is `UNLISTED`, do not expect directory search or browse placement.
+- Open the exact [published v0.1.1 plugin page](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821).
+  Exact-name search currently returns one public result.
 - Review the local hooks before trust; use the source installation steps below
   for Codex development.
-- This branch prepares v0.1.1 for a future update submission and is not the
-  published package.
+- This branch contains the source intended for published v0.1.1. Packaged files
+  retain their pre-publication status wording so the deterministic release tree
+  remains byte-identical to SHA-256 `06b1fe2b4b0b3c39ae14e2027447db37659fd205580e5f9e426dc2d03531c38a`;
+  this root README is the current distribution-status record. Actual selector
+  success across the 50 discovery prompts remains unmeasured.
 
 ## Try it
 

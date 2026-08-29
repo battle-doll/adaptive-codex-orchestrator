@@ -7,9 +7,8 @@
 
 ## Supported version
 
-Security fixes are provided for the latest published version. Version `0.1.0`
-is the current supported published release; version `0.1.1` is an unsubmitted
-update candidate.
+Security fixes are provided for the latest published version. Version `0.1.1`
+is the current supported published release.
 
 ## Reporting a vulnerability
 

@@ -8,16 +8,21 @@ Codex が限定された作業をいつ委任するかを明示的に制御で�
 レビューと安全な並列実行を維持します。すべての作業を自動でマルチエージェント
 化するものではなく、必要なときだけ委任を制御したい開発者向けです。
 
-> 公開状況（2026-08-29 確認）: [v0.1.0 は Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)、
-> リモートカタログでは `GLOBAL` / `AVAILABLE` / `UNLISTED` です。初回公開日は
-> 不明です。v0.1.1 は未提出の更新候補で、LISTED 状態は主張しません。
+> 公開状況（2026-08-29 確認）: [v0.1.1 は Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821) です。
+> 完全一致の名前検索では公開セクションに 1 件だけ表示され、現行バージョンの
+> 詳細ページも正常に開きます。初回公開日とリモートカタログの discoverability
+> フィールドは独立に確認できていません。
 
 ## インストールまたは使用
 
-- 正確な[公開済み v0.1.0 プラグインページ](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)を
-  開きます。`UNLISTED` はディレクトリ検索・閲覧面への掲載を意味しません。
+- 正確な[公開済み v0.1.1 プラグインページ](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)を
+  開きます。完全一致の名前検索では現在、公開結果が 1 件返ります。
 - trust 前に hooks を確認し、Codex 開発用の source installation は下の手順に従います。
-- この branch は将来提出する v0.1.1 候補で、現在公開済みの package ではありません。
+- この branch には公開済み v0.1.1 用の source が含まれます。package files は
+  検証済み SHA-256 `06b1fe2b4b0b3c39ae14e2027447db37659fd205580e5f9e426dc2d03531c38a`
+  との byte identity を保つため公開前の状態表現を維持し、現在の配布状態はこの
+  root README が記録します。50 件の discovery prompts に対する実際の selector
+  成功率は未測定です。
 
 ## 試す
 
@@ -73,10 +78,10 @@ API key、OAuth、外部アカウント、telemetry、制御プレーンのネ�
 
 ## ローカルインストール
 
-manifest には publisher `battle-doll` と公開候補先として指定された
+manifest には publisher `battle-doll` と公開先として指定された
 [GitHub repository](https://github.com/battle-doll/adaptive-codex-orchestrator)、
-homepage・privacy・terms URL が記録されています。この指定は公開済みという
-意味ではなく、使用または提出前に全 URL の到達性と内容を確認する必要があります。
+homepage・privacy・terms URL が記録されています。v0.1.1 は公開済みですが、
+使用または今後の更新前に全 URL の到達性と内容を再確認する必要があります。
 インストール前に
 `.codex-plugin/plugin.json`、`hooks/hooks.json`、`hooks/runtime.py` を確認し、
 hooks を信頼するか判断してください。
@@ -171,14 +176,16 @@ package assertions が PASS しています。GitHub Actions は Windows・macOS
 Linux と Python 3.9・3.12 用に設定されていますが、このローカル記録では
 remote CI は実行していません。
 
-publisher `battle-doll`、manifest 指定の公開候補 URL、2 個の PNG が記録されて
+publisher `battle-doll`、manifest 指定の公開 URL、2 個の PNG が記録されて
 います。中立な
 `assets/logo.png` と `assets/composer-icon.png` を portal の light/dark 4 upload
 slots で再利用するものとして指定しています。本 package は skills-only でユーザー向け MCP tool
 UI がないため、現在の review scope では product UI screenshot は不要です。
 positive 5 件・negative 3 件の [reviewer cases](plugins/adaptive-codex-orchestrator/evals/reviewer-cases.json)も
-準備済みです。公開前には各 URL の到達性と内容、legal/trademark review、実際の公開元
-からの clean install、当時の portal requirement 再確認が必要です。詳細は
+準備済みです。v0.1.1 は公開済みで、完全一致の名前検索では公開結果が 1 件返ります。
+公開後の clean install と 50 件の discovery prompts に対する実際の selector 成功率は
+まだ記録されていません。今後の各更新前に URL、legal/trademark、portal requirement を
+再確認する必要があります。詳細は
 [Submission](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ja.md)と[公開レビュー](plugins/adaptive-codex-orchestrator/docs/i18n/PUBLISHING.ja.md)を参照してください。
 
 source は [MIT License](LICENSE) で提供されます。この翻訳は参考情報で

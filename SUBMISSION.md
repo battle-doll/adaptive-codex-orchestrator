@@ -1,4 +1,4 @@
-# Plugin Submission and Reviewer Notes
+# Plugin v0.1.1 Publication and Reviewer Record
 
 **English** · [한국어](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ko.md) ·
 [日本語](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ja.md) ·
@@ -7,16 +7,18 @@
 
 Prepared: **2026-08-29**
 
-Verified on 2026-08-29: v0.1.0 is **Published** in OpenAI Platform. The remote
-catalog records `GLOBAL` / `AVAILABLE` with discoverability `UNLISTED` at
+Verified on 2026-08-29: v0.1.1 is **Published** in OpenAI Platform at
 <https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821>.
-The first publication date is unknown. `UNLISTED` is not a claim of directory
-search or browse placement. OpenAI's publication workflow is documented at
+Exact-name search returns one result in the public section, and the current-
+version detail page opens successfully. The first publication date and the
+remote-catalog discoverability field were not independently established.
+OpenAI's publication workflow is documented at
 <https://developers.openai.com/plugins/deploy/submission>.
 
-Version v0.1.1 is an **unsubmitted update candidate**. This document does not
-claim submission, approval, publication, LISTED discoverability, affiliation,
-endorsement, or improved performance for that update.
+Files inside `plugins/adaptive-codex-orchestrator/` retain their pre-publication
+status wording because they are part of the deterministic release tree. This
+root record supersedes that wording only for current distribution status; the
+packaged bytes remain frozen at the validated v0.1.1 SHA-256 below.
 
 ## Immutable published v0.1.0 artifact record
 
@@ -29,9 +31,9 @@ endorsement, or improved performance for that update.
 Two independent builds were byte-identical. The SHA-256 sidecar, safe archive
 inspection, trusted-source byte comparison, and isolated smoke import passed.
 This artifact and checksum are historical and must not be rebuilt, replaced,
-or reused as the v0.1.1 candidate checksum.
+or confused with the v0.1.1 checksum.
 
-## Unsubmitted v0.1.1 candidate artifact record
+## Published v0.1.1 artifact record
 
 - File: `adaptive-codex-orchestrator-0.1.1.zip`
 - Files: `90`
@@ -39,11 +41,12 @@ or reused as the v0.1.1 candidate checksum.
 - Uncompressed size: `649,837` bytes
 - SHA-256: `06b1fe2b4b0b3c39ae14e2027447db37659fd205580e5f9e426dc2d03531c38a`
 
-The builder produced two byte-identical candidate builds. The generated
+The builder produced two byte-identical builds. The generated
 sidecar, safe archive inspection, trusted-source byte comparison, and isolated
-smoke import passed. This record identifies a local **unsubmitted update
-candidate** only; it does not claim upload, review, approval, publication,
-LISTED discoverability, or live-host semantic evaluation.
+smoke import passed. The accountable publisher confirmed completion of review
+and the separate Publish action. A trustworthy portal download or digest was
+not available for an independent byte comparison with the uploaded artifact,
+and no live-host selector-success rate is inferred from publication.
 
 ## v0.1.1 listing metadata
 
@@ -100,7 +103,7 @@ and 20 negative Korean/English selection cases. Its validator checks counts,
 locale balance, and selection labels; no live-host or human semantic run is
 claimed.
 
-## Update notes draft
+## Release notes
 
 Discovery-focused patch update. It clarifies that explicit Korean or English
 orchestration controls—not merely parallelizable work—select the plugin, makes
@@ -117,3 +120,13 @@ The release builder creates a sorted, timestamp-fixed ZIP with one
 validator rejects path traversal, portable-name collisions, symlinks, secret-
 like filenames, private home paths, unexpected file modes, oversized members,
 and source/archive byte mismatches before its trusted isolated smoke test.
+
+## Completion evidence and limits
+
+The accountable publisher confirmed v0.1.1 submission, approval, and the
+separate Publish action. Exact-name directory search and the current-version
+detail page were independently rechecked. The exact portal field selections,
+attestation text, first publication date, remote-catalog discoverability field,
+portal-upload byte identity, post-publication clean installation, and actual
+selector success across the 50 discovery prompts were not independently
+retained or measured and must not be reconstructed from this record.

@@ -8,17 +8,21 @@ Codex가 제한된 작업을 언제 위임할지 직접 제어하세요. 작업�
 있습니다. 모든 작업을 자동 다중 에이전트로 돌리는 도구가 아니라, 필요할 때만
 위임 제어를 쓰고 싶은 개발자를 위한 플러그인입니다.
 
-> 게시 상태(2026-08-29 확인): [v0.1.0은 Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)이며
-> 원격 카탈로그는 `GLOBAL` / `AVAILABLE` / `UNLISTED`입니다. 최초 게시 날짜는
-> 확인되지 않았습니다. v0.1.1은 아직 제출하지 않은 업데이트 후보이며 LISTED
-> 상태를 주장하지 않습니다.
+> 게시 상태(2026-08-29 확인): [v0.1.1은 Published](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)입니다.
+> 정확한 이름 검색은 공개 섹션에 단일 결과를 반환하고 현재 버전 상세 페이지도
+> 정상적으로 열립니다. 최초 게시 날짜와 원격 카탈로그 discoverability 필드는
+> 독립적으로 확인하지 못했습니다.
 
 ## 설치 또는 사용
 
-- 정확한 [게시된 v0.1.0 플러그인 페이지](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)를
-  여세요. `UNLISTED`이므로 디렉터리 검색·탐색 노출을 기대하면 안 됩니다.
+- 정확한 [게시된 v0.1.1 플러그인 페이지](https://chatgpt.com/plugins/plugins_6a86354985fc8191b33d2795e2851821)를
+  여세요. 정확한 이름 검색은 현재 공개 결과 하나를 반환합니다.
 - 훅을 신뢰하기 전에 검토하고, Codex 개발용 소스 설치는 아래 절차를 따르세요.
-- 이 브랜치는 향후 제출할 v0.1.1 후보이며 현재 게시된 패키지가 아닙니다.
+- 이 브랜치에는 게시된 v0.1.1용 소스가 들어 있습니다. 패키지 파일은 검증된
+  SHA-256 `06b1fe2b4b0b3c39ae14e2027447db37659fd205580e5f9e426dc2d03531c38a`와
+  바이트 동일성을 보존하기 위해 게시 전 상태 문구를 유지하며, 현재 배포 상태는
+  이 루트 README가 기록합니다. 50개 discovery 프롬프트의 실제 selector 성공률은
+  아직 측정하지 않았습니다.
 
 ## 바로 해보기
 
@@ -83,10 +87,10 @@ Codex가 제한된 작업을 언제 위임할지 직접 제어하세요. 작업�
 
 ## 로컬 설치
 
-현재 manifest에는 게시자 `battle-doll`과 공개 후보 위치로 지정된
+현재 manifest에는 게시자 `battle-doll`과 공개 위치로 지정된
 [GitHub 저장소](https://github.com/battle-doll/adaptive-codex-orchestrator),
-홈페이지·개인정보·약관 URL이 기록되어 있습니다. 이 지정은 게시 완료를 뜻하지
-않으며 사용 또는 제출 전에 각 주소의 접근성과 검토된 내용을 확인해야 합니다. 설치 전에
+홈페이지·개인정보·약관 URL이 기록되어 있습니다. v0.1.1은 게시되었지만 사용 또는
+향후 업데이트 전에 각 주소의 접근성과 검토된 내용을 다시 확인해야 합니다. 설치 전에
 `.codex-plugin/plugin.json`, `hooks/hooks.json`, `hooks/runtime.py`를 검토하고
 훅을 신뢰할지 결정하세요.
 
@@ -181,14 +185,15 @@ one-shot > session > project > global > disabled
 assertion 통과를 기록합니다. GitHub Actions는 Windows·macOS·Linux와 Python
 3.9·3.12로 설정됐지만, 이 로컬 기록에서는 원격 CI를 실행하지 않았습니다.
 
-게시자 `battle-doll`, manifest에 지정된 공개 후보 URL과 PNG 2개가 기록되어
+게시자 `battle-doll`, manifest에 지정된 공개 URL과 PNG 2개가 기록되어
 있습니다. 중립적인
 `assets/logo.png`와 `assets/composer-icon.png`를 포털의 light/dark 네 업로드
 슬롯에 각각 재사용하도록 지정했습니다. 이 패키지는 skills-only이며 사용자 대상 MCP
 도구 UI가 없어 현재 검토 범위에서는 제품 UI 스크린샷이 필요하지 않습니다.
 양성 5개·음성 3개의 [검토 사례](plugins/adaptive-codex-orchestrator/evals/reviewer-cases.json)도 준비되었습니다.
-게시 전에는 각 URL의 접근성과 내용, 법률·상표 검토, 깨끗한 공개 원본 설치와 당시 포털
-요건 재확인이 남아 있습니다. 자세한 내용은 [제출 기록](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ko.md)과
+v0.1.1은 게시되었고 정확한 이름 검색에서 공개 결과 하나가 나옵니다. 게시 후 깨끗한
+원본 설치와 50개 discovery 프롬프트의 실제 selector 성공률은 아직 기록되지 않았습니다.
+각 향후 업데이트 전에는 URL·법률·상표·포털 요건을 다시 확인해야 합니다. 자세한 내용은 [제출 기록](plugins/adaptive-codex-orchestrator/docs/i18n/SUBMISSION.ko.md)과
 [게시 검토](plugins/adaptive-codex-orchestrator/docs/i18n/PUBLISHING.ko.md)를 참고하세요.
 
 소스는 [MIT License](LICENSE)로 제공됩니다. 번역본은 편의를 위한
